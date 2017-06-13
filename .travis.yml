@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- 6
+- 7
+deploy:
+  provider: heroku
+  api_key:
+    secure: HdVX3m+6uvxj2hSTiTM6lOJIUALLcZ8aYIRTGv6KTpBznDVyvb/orgyUT27iXF95Kg7BLrmR/LMDEQboZwFjD0Ka78gfvsE0/7A5sA5ezh9lJe1/Ev+jMYyTTkJySWOGNeRCr8ZiL1qAvdKUKKht/qgFNxXi045YMS5fZiTUy9ViizjivYJO2D8pEXjldaxEgFmUYiQ6AVOuzBTEMfcijPJznCIott6u5oPW36Tx4dik0A4Z0YpTl/r7MK5yRik4rXViQkLWtYWa1ju3jsyDABSn9kSBPXnfKwh74gZcbcD7OUqC9V7HFbf6xhU0Ty4lqPbPEP1Phfb01v0Ir38qwExfsdL4bP7NLkNi99IbskyPgIZH9+N4JYSF+nieImck6AyXATPwM80Nj0TQ+3pk2nz4QKP7c4CMCpvbbv6riOjXqjalGvtc7lq77eoKAsuILvUETxYWcHIerYtJBOwarRNeh/PqrkklczYAvGe7hhRM5yaT2+3CV3imFFmy97Z/yhM4+hdCKJYWHw6cVl5gd9QZWuZeHufId/8k3tq4fpU8fSBg6SR4LEbUzAaynE9Qpds813lkI/gj8eLugmtsFd+wBbuOr5NzWtqZ1ryKQAEoWNL0kidFfLF9xDTMAootXCVf4nEpgqSab1b3nI+gJ/V6iDnu2Xocl6RQgENmWLc=
+  app: monster-hunter-app-api
+  on:
+    repo: koodilauri/monster-hunter-app-backend
