@@ -7,7 +7,7 @@ var corsOptions = {
   optionsSuccessStatus: 200
 }
 
-const port = process.env.PORT
+const port = process.env.PORT || 8081
 
 app.get("/", (req, res, next) => {
   res.send("Hello World")
