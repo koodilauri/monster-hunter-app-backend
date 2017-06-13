@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/koodilauri/monster-hunter-app-backend.svg?branch=master)](https://travis-ci.org/koodilauri/monster-hunter-app-backend)
