@@ -3,7 +3,7 @@ var cors = require('cors')
 const app = express()
 
 var corsOptions = {
-  origin: 'https://monster-hunter-app.herokuapp.com/',
+  origin: ["http://localhost:3000", "https://monster-hunter-app.herokuapp.com/"],
   optionsSuccessStatus: 200
 }
 
