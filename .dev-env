@@ -1,0 +1,7 @@
+NODE_ENV=development
+DATABASE_URL=postgresql://mh_db_user:1qaz2wsx@localhost:8081/mh_db
+DB_USER=mh_db_user
+DB_PASS=1qaz2wsx
+DB_HOST=localhost
+DB_NAME=mh_db
+DB_PORT=8081

@@ -1,6 +1,10 @@
 const express = require("express")
 var cors = require('cors')
 const app = express()
+require("./db/connect").connect()
+const query = require("./db/connect").query
+const Submission = require("./models/Submission")
+require('dotenv').config()
 
 var corsOptions = {
   origin: ["https://monster-hunter-app.herokuapp.com", "http://localhost:3000"],
@@ -14,11 +18,8 @@ app.get("/", (req, res, next) => {
 })
 
 app.get("/submission", cors(corsOptions), (req, res, next) => {
-  res.json({
-    submissions: [
-      { "name": 'tobi',  "time":"05:11:00", "type":1},
-      { "name":"lauri", "time":"07:46:00","type":2}
-    ]})
+  Submission.findAll().then( (result) => {res.json({submissions: result})}).catch( (err) => { res.send("errror")})      
+  
 })
 
 app.listen(port, (err) => {
