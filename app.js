@@ -13,7 +13,7 @@ app.get("/", (req, res, next) => {
   res.send("Hello World")
 })
 
-app.get("/submissions", cors(corsOptions), (req, res, next) => {
+app.get("/submission", cors(corsOptions), (req, res, next) => {
   res.json({
     submissions: [
       { "name": 'tobi',  "time":"05:11:00", "type":1},
@@ -28,3 +28,5 @@ app.listen(port, (err) => {
     console.log("App is listening on port " + port)
   }
 })
+
+module.exports = app
