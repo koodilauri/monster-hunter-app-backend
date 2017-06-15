@@ -1,5 +1,4 @@
 const pg = require('pg');
-require('dotenv').config()
 
 const v = process.env.DB_USER;
 
