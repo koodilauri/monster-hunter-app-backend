@@ -15,8 +15,6 @@ services:
 addons:
   postgresql: "9.6"
 before_script:
-  - psql -c "CREATE USER mh_db_user WITH PASSWORD '1qaz2wsx';" -U postgres
-  - psql -c "ALTER ROLE mh_db_user CREATEDB;" -U postgres
-  - psql -c 'create database mh_db;' -U mh_db_user
+  - psql < ./db/migrations/0_0_init_db.sql
   - psql mh_db < ./db/migrations/1_0_create-submission.sql
   - psql mh_db < ./db/test/add-test-data.sql
