@@ -1,0 +1,10 @@
+DROP DATABASE mh_db;
+DROP ROLE mh_db_user;
+
+CREATE ROLE mh_db_user WITH LOGIN PASSWORD '1qaz2wsx' CREATEDB;
+CREATE DATABASE mh_db WITH
+  OWNER mh_db_user
+  ENCODING 'UTF8'
+  LC_COLLATE 'fi_FI.UTF-8'
+  LC_CTYPE 'fi_FI.UTF-8'
+  TEMPLATE template0;
