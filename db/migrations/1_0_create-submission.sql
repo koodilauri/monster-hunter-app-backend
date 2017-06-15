@@ -7,3 +7,4 @@ CREATE TABLE submission (
   style VARCHAR (25) NOT NULL ,
   created TIMESTAMPTZ NOT NULL
 );
+GRANT ALL PRIVILEGES ON TABLE submission TO mh_db_user;
