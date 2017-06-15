@@ -15,6 +15,6 @@ services:
 addons:
   postgresql: "9.6"
 before_script:
-  - psql < ./db/migrations/0_0_init_db.sql
+  - psql postgres < ./db/migrations/0_0_init_db.sql
   - psql mh_db < ./db/migrations/1_0_create-submission.sql
   - psql mh_db < ./db/test/add-test-data.sql
