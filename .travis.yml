@@ -19,3 +19,4 @@ before_script:
   - psql -c "CREATE USER mh_db_user WITH PASSWORD '1qaz2wsx';" -U postgres
   - psql mh_db < ./db/migrations/1_0_create-submission.js
   - psql mh_db < ./db/test/add-test-data.sql
+  - psql -d mh_db 'GRANT ALL PRIVILEGES ON TABLE submission TO mh_db_user;' -U postgres

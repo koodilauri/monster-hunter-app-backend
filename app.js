@@ -18,7 +18,7 @@ app.get("/", (req, res, next) => {
 })
 
 app.get("/submission", cors(corsOptions), (req, res, next) => {
-  Submission.findAll().then( (result) => {res.json({submissions: result})}).catch( (err) => { res.send("errror")})      
+  Submission.findAll().then( (result) => {res.json({submissions: result})}).catch( (err) => { res.json({error: err})})      
   
 })
 
