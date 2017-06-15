@@ -9,6 +9,7 @@ deploy:
   app: monster-hunter-app-api
   on:
     repo: koodilauri/monster-hunter-app-backend
+dist: trusty
 services:
   - postgresql
 addons:
@@ -16,11 +17,3 @@ addons:
 before_script:
   - psql -c 'create database mh_db;' -U postgres
   - psql -c "CREATE USER mh_db_user WITH PASSWORD '1qaz2wsx';" -U postgres
-env:
-  - NODE_ENV=development
-  - DATABASE_URL=postgresql://mh_db_user:1qaz2wsx@localhost:8081/mh_db
-  - DB_USER=mh_db_user
-  - DB_PASS=1qaz2wsx
-  - DB_HOST=localhost
-  - DB_NAME=mh_db
-  - DB_PORT=8081
