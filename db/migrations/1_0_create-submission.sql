@@ -1,5 +1,5 @@
 CREATE TABLE submission (
-  id INTEGER PRIMARY KEY,
+  id  SERIAL PRIMARY KEY,
   name VARCHAR (25) NOT NULL ,
   quest VARCHAR (255) NOT NULL,
   questtime TIME NOT NULL ,
