@@ -29,7 +29,7 @@ module.exports.query = function (text, values) {
   return new Promise((resolve, reject) => {
     pool.query(text, values, (error, result) => {
       if (error) reject(error)
-      resolve(result.rows)
+      resolve(result)
     })
   })
 };
