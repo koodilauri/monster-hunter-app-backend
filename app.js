@@ -5,12 +5,14 @@ const app = express()
 const bodyParser = require('body-parser')
 require("./db/connect").connect()
 const Submission = require("./models/Submission")
-const logger = require("morgan");
 const corsOptions = {
   origin: ["https://monster-hunter-app.herokuapp.com", "http://localhost:3000"],
   optionsSuccessStatus: 200
 }
-
+if (process.env.NODE_ENV != "production") {
+  const logger = require("morgan");
+  app.use(logger("dev"));
+}
 const port = process.env.PORT || 8081
 
 app.use(bodyParser.urlencoded({
@@ -18,7 +20,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(cors(corsOptions))
-app.use(logger("dev"));
 
 app.get("/", (req, res, next) => {
   res.send("hei")

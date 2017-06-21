@@ -1,7 +1,5 @@
 const pg = require('pg');
 
-const v = process.env.DB_USER;
-
 const config = {
   // user: process.env.DB_USER,
   // password: process.env.DB_PASS,
