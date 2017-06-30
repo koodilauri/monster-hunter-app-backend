@@ -32,8 +32,11 @@ app.get("/submission", (req, res, next) => {
 app.post("/submission", (req, res, next) => {
   if (!req.body) return res.sendStatus(400)
   console.log(req.body)
+  let questTime = '00:' + req.body.Min + ':' + req.body.Sec;
+  req.body.questTime = questTime;
+  console.log(questTime)
   const time = new Date()
-  Submission.addOne(req.body.name, req.body.quest, '00:' + req.body.questTime, req.body.weapon, req.body.style, time).then((result) => { res.sendStatus(200) }).catch((err) => { console.log(err); res.send(err) })
+  Submission.addOne(req.body.name, req.body.quest, questTime, req.body.weapon, req.body.style, time).then((result) => { res.send(req.body) }).catch((err) => { console.log(err); res.send(err) })
 })
 
 app.listen(port, (err) => {
