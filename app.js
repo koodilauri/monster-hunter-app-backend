@@ -5,6 +5,8 @@ const app = express()
 const bodyParser = require('body-parser')
 require("./db/connect").connect()
 const Submission = require("./models/Submission")
+const views = require("./views/views")
+
 const corsOptions = {
   origin: ["https://monster-hunter-app.herokuapp.com", "http://localhost:3000"],
   optionsSuccessStatus: 200
@@ -26,17 +28,11 @@ app.get("/", (req, res, next) => {
 })
 
 app.get("/submission", (req, res, next) => {
-  Submission.findAll().then((result) => { res.json({ submissions: result.rows }) }).catch((err) => { res.json({ error: error }) })
+  views.GetSubmission(req, res, next)
 })
 
 app.post("/submission", (req, res, next) => {
-  if (!req.body) return res.sendStatus(400)
-  console.log(req.body)
-  let questTime = '00:' + req.body.Min + ':' + req.body.Sec;
-  req.body.questTime = questTime;
-  console.log(questTime)
-  const time = new Date()
-  Submission.addOne(req.body.name, req.body.quest, questTime, req.body.weapon, req.body.style, time).then((result) => { res.send(req.body) }).catch((err) => { console.log(err); res.send(err) })
+  views.PostSubmission(req, res, next)
 })
 
 app.listen(port, (err) => {
