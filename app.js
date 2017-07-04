@@ -4,7 +4,6 @@ const cors = require('cors')
 const app = express()
 const bodyParser = require('body-parser')
 require("./db/connect").connect()
-const Submission = require("./models/Submission")
 const views = require("./views/views")
 
 const corsOptions = {

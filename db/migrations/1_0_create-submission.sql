@@ -5,6 +5,7 @@ CREATE TABLE submission (
   questtime TIME NOT NULL ,
   weapon VARCHAR (25) NOT NULL ,
   style VARCHAR (25) NOT NULL ,
-  created TIMESTAMPTZ NOT NULL
+  created TIMESTAMPTZ NOT NULL,
+  setID int FOREIGN KEY REFERENCES armorset(id)
 );
 GRANT ALL PRIVILEGES ON TABLE submission TO mh_db_user;
