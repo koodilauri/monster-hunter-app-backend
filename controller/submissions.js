@@ -1,6 +1,6 @@
 const Submission = require("../models/Submission")
 
-exports.GetSubmission = (req, res, next, filter = "ALL") => {
+exports.getSubmission = (req, res, next, filter = "ALL") => {
   if (filter === "ALL") {
     Submission.findAll()
       .then((result) => { res.json({ submissions: result.rows }) })
@@ -10,7 +10,7 @@ exports.GetSubmission = (req, res, next, filter = "ALL") => {
   }
 }
 
-exports.PostSubmission = (req, res, next) => {
+exports.postSubmission = (req, res, next) => {
   if (!req.body) return res.sendStatus(400)
   console.log(req.body)
   let questTime = '00:'

@@ -18,4 +18,5 @@ before_script:
   - psql postgres < ./db/migrations/0_0_init_db.sql
   - psql mh_db < ./db/migrations/2_0_create-armorset.sql  
   - psql mh_db < ./db/migrations/1_0_create-submission.sql
+  - psql mh_db < ./db/migrations/3_0_create-quest.sql    
   - psql mh_db < ./db/test/add-test-data.sql

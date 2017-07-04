@@ -4,7 +4,7 @@ const cors = require('cors')
 const app = express()
 const bodyParser = require('body-parser')
 require("./db/connect").connect()
-const views = require("./views/views")
+const controller = require("./controller/submission")
 
 const corsOptions = {
   origin: ["https://monster-hunter-app.herokuapp.com", "http://localhost:3000"],
@@ -27,11 +27,11 @@ app.get("/", (req, res, next) => {
 })
 
 app.get("/submission", (req, res, next) => {
-  views.GetSubmission(req, res, next)
+  controller.getSubmission(req, res, next)
 })
 
 app.post("/submission", (req, res, next) => {
-  views.PostSubmission(req, res, next)
+  controller.postSubmission(req, res, next)
 })
 
 app.listen(port, (err) => {
