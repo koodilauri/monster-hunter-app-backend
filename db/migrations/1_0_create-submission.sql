@@ -6,6 +6,6 @@ CREATE TABLE submission (
   weapon VARCHAR (25) NOT NULL ,
   style VARCHAR (25) NOT NULL ,
   created TIMESTAMPTZ NOT NULL,
-  setID int FOREIGN KEY REFERENCES armorset(id)
+  setID int REFERENCES armorset(id)
 );
 GRANT ALL PRIVILEGES ON TABLE submission TO mh_db_user;
