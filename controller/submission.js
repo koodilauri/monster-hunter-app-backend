@@ -31,3 +31,9 @@ exports.postSubmission = (req, res, next) => {
     .then((result) => { res.send(req.body) })
     .catch((err) => { console.log(err); res.send(err) })
 }
+
+exports.getQuestData = (req, res, next) => {
+    Submission.getQuestList(req.query.q)
+      .then((result) => { res.json({ items: result.rows }) })
+      .catch((err) => { res.json({ error: error }) })
+}

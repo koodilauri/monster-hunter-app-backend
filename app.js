@@ -34,6 +34,12 @@ app.post("/submission", (req, res, next) => {
   controller.postSubmission(req, res, next)
 })
 
+app.get("/questlist", (req, res, next) => {
+  console.log(req.query.q)
+  controller.getQuestData(req, res, next)
+})
+
+
 app.listen(port, (err) => {
   if (err) {
     console.log(err)
