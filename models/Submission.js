@@ -11,8 +11,8 @@ const Submission = {
     return query(`INSERT INTO submission (name, questid, questtime, weapon, style, created) VALUES ($1, $2, $3, $4, $5, $6)`, [name, questid, questtime, weapon, style, created])
   },
   getQuestList(string) {
-    return query(`SELECT name, quest.id AS value FROM quest
-    WHERE name LIKE $1`, ['%'+string+'%'])
+    return query(`SELECT questgiver, stars, name, quest.id AS value FROM quest
+    WHERE LOWER(name) LIKE LOWER($1)`, ['%'+string+'%'])
   }
 }
 
