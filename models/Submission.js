@@ -2,12 +2,17 @@ const query = require("../db/connect").query
 
 const Submission = {
   findAll() {
-    return query(`SELECT * FROM submission`)
+    return query(`SELECT submission.id, submission.name, quest.name AS questname, questtime, weapon, style, created, setid FROM submission
+    JOIN quest
+    ON quest.id = submission.questId`)
   },
-  addOne(name, quest, questtime, weapon, style, created) {
+  addOne(name, questid, questtime, weapon, style, created) {
     // const string = "INSERT INTO submission (name, quest, questtime, weapon, style, created) VALUES ('"+name+"', '"+quest+"', '"+questtime+"', '"+weapon+"', '"+style+"', '"+created+"')";
-    return query(`INSERT INTO submission (name, quest, questtime, weapon, style, created) VALUES ($1, $2, $3, $4, $5, $6)`, [name, quest, questtime, weapon, style, created])
-
+    return query(`INSERT INTO submission (name, questid, questtime, weapon, style, created) VALUES ($1, $2, $3, $4, $5, $6)`, [name, questid, questtime, weapon, style, created])
+  },
+  getQuestList(string) {
+    return query(`SELECT questgiver, stars, name, quest.id AS value FROM quest
+    WHERE LOWER(name) LIKE LOWER($1)`, ['%'+string+'%'])
   }
 }
 
