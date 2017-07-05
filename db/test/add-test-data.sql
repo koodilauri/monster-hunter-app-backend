@@ -1,6 +1,3 @@
-INSERT INTO submission (name, questId, questtime, weapon, style, created) VALUES ('lauri', '1', '00:05:31', 'Hammer', 'adept', '2017-06-12');
-INSERT INTO submission (name, questId, questtime, weapon, style, created) VALUES ('bob', '2', '00:06:02', 'Lance', 'striker', '2017-06-13');
-
 INSERT INTO quest (name, stars, questGiver) VALUES ('Stop the Wheel', '7', 'guild');
 INSERT INTO monsterInQuest (questId, monster) VALUES (1, 'Shagaru Magala');
 
@@ -27,3 +24,6 @@ INSERT INTO monsterInQuest (questId, monster) VALUES (5, 'Furious Rajang');
 
 INSERT INTO quest (name, questGiver) VALUES ('Capcom: The Rulers Rage', 'event');
 INSERT INTO monsterInQuest (questId, monster) VALUES (6, 'Akantor');
+
+INSERT INTO submission (name, questId, questtime, weapon, style, created) VALUES ('lauri', '1', '00:05:31', 'Hammer', 'adept', '2017-06-12');
+INSERT INTO submission (name, questId, questtime, weapon, style, created) VALUES ('bob', '2', '00:06:02', 'Lance', 'striker', '2017-06-13');
