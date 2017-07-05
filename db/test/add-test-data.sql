@@ -1,5 +1,5 @@
-INSERT INTO submission (name, quest, questtime, weapon, style, created) VALUES ('lauri', 'quest1', '00:05:31', 'Hammer', 'adept', '2017-06-12');
-INSERT INTO submission (name, quest, questtime, weapon, style, created) VALUES ('bob', 'quest2', '00:06:02', 'Lance', 'striker', '2017-06-13');
+INSERT INTO submission (name, questId, questtime, weapon, style, created) VALUES ('lauri', '14', '00:05:31', 'Hammer', 'adept', '2017-06-12');
+INSERT INTO submission (name, questId, questtime, weapon, style, created) VALUES ('bob', '15', '00:06:02', 'Lance', 'striker', '2017-06-13');
 
 INSERT INTO quest (name, stars, questGiver) VALUES ('Stop the Wheel', '7', 'guild');
 INSERT INTO monsterInQuest (questId, monster) VALUES (1, 'Shagaru Magala');
