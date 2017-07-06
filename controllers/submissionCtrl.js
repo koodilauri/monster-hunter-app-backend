@@ -28,7 +28,17 @@ exports.postSubmission = (req, res, next) => {
   req.body.newSubmission.questTime = questTime
   const time = new Date()
   Submission.addOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weapon, req.body.newSubmission.style, time)
-    .then((result) => { res.send(req.body) })
+    .then((result) => { res.send({
+      newSubmission: {
+        name:req.body.newSubmission.name,
+        questname:req.body.newSubmission.questName,
+        questtime:questTime,
+        weapon:req.body.newSubmission.weapon,
+        style:req.body.newSubmission.style,
+        created:time,
+        setid: null
+      }
+    }) })
     .catch((err) => { console.log(err); res.send(err) })
 }
 

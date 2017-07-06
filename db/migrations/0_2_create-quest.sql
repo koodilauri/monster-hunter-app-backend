@@ -11,5 +11,3 @@ CREATE TABLE monsterInQuest (
   monster VARCHAR(30)
 );
 
-GRANT ALL PRIVILEGES ON TABLE quest TO mh_db_user;
-GRANT ALL PRIVILEGES ON TABLE MonsterInQuest TO mh_db_user;
