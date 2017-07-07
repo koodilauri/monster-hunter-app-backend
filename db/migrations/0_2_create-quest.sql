@@ -3,7 +3,7 @@ CREATE TABLE quest (
   name VARCHAR (30) ,
   stars smallint default 0,
   questGiver VARCHAR (30),
-  game VARCHAR (30) DEFAULT "MHGen"
+  game VARCHAR (30)
 );
 
 CREATE TABLE monsterInQuest (
