@@ -2,7 +2,8 @@ CREATE TABLE quest (
   id  SERIAL PRIMARY KEY,
   name VARCHAR (30) ,
   stars smallint default 0,
-  questGiver VARCHAR (30)
+  questGiver VARCHAR (30),
+  game VARCHAR (30) DEFAULT "MHGen"
 );
 
 CREATE TABLE monsterInQuest (
