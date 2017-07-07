@@ -7,3 +7,4 @@ CREATE TABLE armorset (
   feet VARCHAR (30) ,
   charm VARCHAR (30)
 );
+GRANT ALL PRIVILEGES ON TABLE armorset TO mh_db_user;

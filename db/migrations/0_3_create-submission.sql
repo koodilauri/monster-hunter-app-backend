@@ -9,3 +9,4 @@ CREATE TABLE submission (
   setID int REFERENCES armorset(id)
 );
 
+GRANT ALL PRIVILEGES ON TABLE submission TO mh_db_user;
