@@ -54,7 +54,7 @@ describe("app route", () => {
         .expect('Content-Type', /json/)
         .expect((res) => {
           expect(res.body.items.length).to.equal(1)
-          expect(res.body.items[0].value).to.equal('1')
+          expect(res.body.items[0].value).to.equal(1)
         })
         .expect(200, done)
     })
