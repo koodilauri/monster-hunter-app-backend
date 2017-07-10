@@ -18,14 +18,14 @@ describe("app route", () => {
     })
   })
   describe("POST /submission", () => {
-    it("should return submission", (done) => {
+    it("should return post submission", (done) => {
       request(app)
         .post("/submission")
         .send({
           newSubmission: {
             name: 'lauri',
             questName: 'Wheel of Time',
-            questId: '7',
+            questId: '1',
             weapon: "Hammer",
             style: "Guild",
             Min: '11',
@@ -46,7 +46,7 @@ describe("app route", () => {
     })
   })
   describe("GET /questlist", () => {
-    it("should return quest: wheel of time (id:7)", (done) => {
+    it("should return quest: wheel of time (id:1)", (done) => {
       request(app)
         .get("/questlist")
         .query({ q: 'wheeL', language: 'javascript' })
@@ -54,7 +54,7 @@ describe("app route", () => {
         .expect('Content-Type', /json/)
         .expect((res) => {
           expect(res.body.items.length).to.equal(1)
-          expect(res.body.items[0].value).to.equal('7')
+          expect(res.body.items[0].value).to.equal('1')
         })
         .expect(200, done)
     })
