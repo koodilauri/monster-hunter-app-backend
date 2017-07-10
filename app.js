@@ -26,18 +26,11 @@ app.get("/", (req, res, next) => {
   res.send("hei")
 })
 
-app.get("/submission", (req, res, next) => {
-  submissionCtrl.getSubmission(req, res, next)
-})
+app.get("/submission", submissionCtrl.getSubmission)
 
-app.post("/submission", (req, res, next) => {
-  submissionCtrl.postSubmission(req, res, next)
-})
+app.post("/submission", submissionCtrl.postSubmission)
 
-app.get("/questlist", (req, res, next) => {
-  console.log(req.query.q)
-  submissionCtrl.getQuestData(req, res, next)
-})
+app.get("/questlist", submissionCtrl.getQuestData)
 
 
 app.listen(port, (err) => {

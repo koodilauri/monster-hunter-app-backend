@@ -1,13 +1,9 @@
 const Submission = require("../models/Submission")
 
-exports.getSubmission = (req, res, next, filter = "ALL") => {
-  if (filter === "ALL") {
-    Submission.findAll()
-      .then((result) => { res.json({ submissions: result.rows }) })
-      .catch((err) => { res.json({ error: error }) })
-  } else {
-    res.json({ error: "strange filter" })
-  }
+exports.getSubmission = (req, res, next) => {
+  Submission.findAll()
+    .then((result) => { res.json({ submissions: result.rows }) })
+    .catch((err) => { res.json({ error: error }) })
 }
 
 exports.postSubmission = (req, res, next) => {
@@ -28,22 +24,24 @@ exports.postSubmission = (req, res, next) => {
   req.body.newSubmission.questTime = questTime
   const time = new Date()
   Submission.addOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weapon, req.body.newSubmission.style, time)
-    .then((result) => { res.send({
-      newSubmission: {
-        name:req.body.newSubmission.name,
-        questname:req.body.newSubmission.questName,
-        questtime:questTime,
-        weapon:req.body.newSubmission.weapon,
-        style:req.body.newSubmission.style,
-        created:time,
-        setid: null
-      }
-    }) })
+    .then((result) => {
+      res.send({
+        newSubmission: {
+          name: req.body.newSubmission.name,
+          questname: req.body.newSubmission.questName,
+          questtime: questTime,
+          weapon: req.body.newSubmission.weapon,
+          style: req.body.newSubmission.style,
+          created: time,
+          setid: null
+        }
+      })
+    })
     .catch((err) => { console.log(err); res.send(err) })
 }
 
 exports.getQuestData = (req, res, next) => {
-    Submission.getQuestList(req.query.q)
-      .then((result) => { res.json({ items: result.rows }) })
-      .catch((err) => { res.json({ error: error }) })
+  Submission.getQuestList(req.query.q)
+    .then((result) => { res.json({ items: result.rows }) })
+    .catch((err) => { res.json({ error: error }) })
 }
