@@ -10,3 +10,4 @@ CREATE TABLE submission (
 );
 
 GRANT ALL PRIVILEGES ON TABLE submission TO mh_db_user;
+GRANT USAGE, SELECT ON SEQUENCE submission_id_seq TO mh_db_user;
