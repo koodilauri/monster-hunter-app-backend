@@ -10,15 +10,15 @@ exports.postSubmission = (req, res, next) => {
   if (!req.body) return res.sendStatus(400)
   console.log(req.body)
   let questTime = '00:'
-  if (req.body.newSubmission.Min >= 10) {
-    questTime = questTime + req.body.newSubmission.Min + ':'
+  if (req.body.newSubmission.min >= 10) {
+    questTime = questTime + req.body.newSubmission.min + ':'
   } else {
-    questTime = questTime + "0" + req.body.newSubmission.Min + ':'
+    questTime = questTime + "0" + req.body.newSubmission.min + ':'
   }
-  if (req.body.newSubmission.Sec >= 10) {
-    questTime = questTime + req.body.newSubmission.Sec
+  if (req.body.newSubmission.sec >= 10) {
+    questTime = questTime + req.body.newSubmission.sec
   } else {
-    questTime = questTime + "0" + req.body.newSubmission.Sec
+    questTime = questTime + "0" + req.body.newSubmission.sec
   }
 
   req.body.newSubmission.questTime = questTime
@@ -41,7 +41,7 @@ exports.postSubmission = (req, res, next) => {
 }
 
 exports.getQuestData = (req, res, next) => {
-  Submission.getQuestList(req.query.q)
+  Submission.getQuestList()
     .then((result) => { res.json({ items: result.rows }) })
     .catch((err) => { res.json({ error: error }) })
 }

@@ -28,8 +28,8 @@ describe("app route", () => {
             questId: '1',
             weapon: "Hammer",
             style: "Guild",
-            Min: '11',
-            Sec: '12'
+            min: '11',
+            sec: '12'
           }
         })
         .set('Accept', 'application/json')
@@ -46,15 +46,13 @@ describe("app route", () => {
     })
   })
   describe("GET /questlist", () => {
-    it("should return quest: wheel of time (id:1)", (done) => {
+    it("should return all 6 quests", (done) => {
       request(app)
         .get("/questlist")
-        .query({ q: 'wheeL', language: 'javascript' })
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect((res) => {
-          expect(res.body.items.length).to.equal(1)
-          expect(res.body.items[0].value).to.equal(1)
+          expect(res.body.items.length).to.equal(6)
         })
         .expect(200, done)
     })
