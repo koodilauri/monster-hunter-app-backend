@@ -20,3 +20,5 @@ before_script:
   - psql mh_db < ./db/migrations/0_2_create-quest.sql    
   - psql mh_db < ./db/migrations/0_3_create-submission.sql
   - psql mh_db < ./db/test/add-test-data.sql
+ notifications:
+    slack: koodipaja:vgVozcfSx0yoT2z0nfYfsa6J
