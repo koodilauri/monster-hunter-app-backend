@@ -10,9 +10,8 @@ const Submission = {
     // const string = "INSERT INTO submission (name, quest, questtime, weapon, style, created) VALUES ('"+name+"', '"+quest+"', '"+questtime+"', '"+weapon+"', '"+style+"', '"+created+"')";
     return query(`INSERT INTO submission (name, questid, questtime, weapon, style, created) VALUES ($1, $2, $3, $4, $5, $6)`, [name, questid, questtime, weapon, style, created])
   },
-  getQuestList(string) {
-    return query(`SELECT questgiver, stars, name, quest.id AS value FROM quest
-    WHERE LOWER(name) LIKE LOWER($1)`, ['%'+string+'%'])
+  getQuestList() {
+    return query(`SELECT questgiver, stars, name, quest.id AS value FROM quest`)
   }
 }
 

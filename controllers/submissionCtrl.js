@@ -41,7 +41,7 @@ exports.postSubmission = (req, res, next) => {
 }
 
 exports.getQuestData = (req, res, next) => {
-  Submission.getQuestList(req.query.q)
+  Submission.getQuestList()
     .then((result) => { res.json({ items: result.rows }) })
     .catch((err) => { res.json({ error: error }) })
 }
