@@ -28,8 +28,8 @@ describe("app route", () => {
             questId: "1",
             weapon: "Hammer",
             style: "Guild",
-            min: "11",
-            sec: "12"
+            min: 11,
+            sec: 12
           }
         })
         .set("Accept", "application/json")
