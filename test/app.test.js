@@ -30,7 +30,8 @@ describe("app route", () => {
             style: "Guild",
             min: 11,
             sec: 12
-          }
+          },
+          armorSet: {}
         })
         .set("Accept", "application/json")
         .expect("Content-Type", /json/)
@@ -45,10 +46,10 @@ describe("app route", () => {
         .expect(200, done)
     })
   })
-  describe("GET /questlist", () => {
+  describe("GET /quest", () => {
     it("should return all 6 quests", (done) => {
       request(app)
-        .get("/questlist")
+        .get("/quest")
         .set("Accept", "application/json")
         .expect("Content-Type", /json/)
         .expect((res) => {
