@@ -1,19 +1,20 @@
 const Submission = require("../models/Submission")
+const handleErrors = require("../middlewares/errorHandler")
 
 exports.getSubmission = (req, res, next) => {
+  console.log("body: ",req.body)
   Submission.findAll()
     .then((result) => { res.json({ submissions: result.rows }) })
-    .catch((err) => { res.json({ error: error }) })
+    .catch((err) => handleErrors)
 }
 
 exports.postSubmission = (req, res, next) => {
   if (!req.body) return res.sendStatus(400)
-  console.log(req.body)
-  let questTime = '00:'
+  let questTime = "00:"
   if (req.body.newSubmission.min >= 10) {
-    questTime = questTime + req.body.newSubmission.min + ':'
+    questTime = questTime + req.body.newSubmission.min + ":"
   } else {
-    questTime = questTime + "0" + req.body.newSubmission.min + ':'
+    questTime = questTime + "0" + req.body.newSubmission.min + ":"
   }
   if (req.body.newSubmission.sec >= 10) {
     questTime = questTime + req.body.newSubmission.sec
@@ -21,7 +22,6 @@ exports.postSubmission = (req, res, next) => {
     questTime = questTime + "0" + req.body.newSubmission.sec
   }
 
-  req.body.newSubmission.questTime = questTime
   const time = new Date()
   Submission.addOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weapon, req.body.newSubmission.style, time)
     .then((result) => {
