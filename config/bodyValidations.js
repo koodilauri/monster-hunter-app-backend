@@ -8,14 +8,14 @@ exports.validations = {
           properties: {
             name: {
               type: "string",
-              pattern: /^([a-zA-Z0-9']+(-| )?)*$/i
+              pattern: /^([a-zA-Z0-9':!?]+(-| )?)*$/i
             },
             questName: {
               type: "string",
-              pattern: /^([a-zA-Z0-9']+(-| )?)*$/i
+              pattern: /^([a-zA-Z0-9':!?]+(-| )?)*$/i
             },
             questId: {
-              type: 'string'
+              type: 'number'
             },
             questTime: {
               type: 'any',

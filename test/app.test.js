@@ -25,7 +25,7 @@ describe("app route", () => {
           newSubmission: {
             name: "lauri",
             questName: "Harvest Tour: Jurassic Frontier",
-            questId: "1",
+            questId: 1,
             weapon: "Hammer",
             style: "Guild",
             min: 11,
