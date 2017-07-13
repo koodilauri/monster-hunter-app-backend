@@ -28,23 +28,12 @@ app.get("/", (req, res, next) => {
   res.send("hei")
 })
 
-app.get(
-  "/submission",  
-  validate.validateBody("submission", "get"), 
-  submissionCtrl.getSubmission,
-  error.handleErrors
-)
+app.get("/submission", submissionCtrl.getSubmission, error.handleErrors)
 
-app.post(
-  "/submission", 
-  validate.validateBody("submission", "post"), 
-  submissionCtrl.postSubmission,
-  error.handleErrors
-)
+app.post("/submission", validate.validateBody("submission", "post"), submissionCtrl.postSubmission, error.handleErrors)
 
 app.get(
-  "/quest", 
-  validate.validateBody("quest", "get"),
+  "/quest",
   submissionCtrl.getQuestData,
   error.handleErrors
 )

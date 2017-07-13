@@ -13,20 +13,19 @@ CREATE TABLE armor (
   part VARCHAR(30) NOT NULL,
   type VARCHAR(30) NOT NULL,
   armorvalue smallint NOT NULL
-); 
+);
 
-CREATE TABLE decoration(
+CREATE TABLE decoration (
   id SERIAL PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
   size smallint NOT NULL,
   skill1id int REFERENCES skill(id) NOT NULL,
   bonus1 smallint NOT NULL,
   skill2id int REFERENCES skill(id),
-  bonus2 smallint NOT NULL,
+  bonus2 smallint NOT NULL
+);
 
-); 
-
-CREATE TABLE weapon(
+CREATE TABLE weapon (
   id SERIAL PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
   slots smallint NOT NULL,
@@ -34,9 +33,9 @@ CREATE TABLE weapon(
   type VARCHAR(30) NOT NULL,
   attack smallint NOT NULL,
   affinity smallint NOT NULL
-); 
+);
 
-CREATE TABLE charm(
+CREATE TABLE charm (
   id SERIAL PRIMARY KEY,  
   slots smallint NOT NULL,
   skill1id int REFERENCES skill(id) NOT NULL,

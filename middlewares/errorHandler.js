@@ -8,7 +8,7 @@ exports.handleErrors = (err, req, res, next) => {
       console.log("Caught an error!", err)
       console.log(JSON.stringify(err, null, 2))
       if (err.message !== undefined) {
-        res.status(statusCode).json({"error": err});
+        res.status(statusCode).json({ "error": err });
       } else {
         res.status(statusCode).json({
           message: "Something caused an internal server error",

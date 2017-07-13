@@ -1,9 +1,11 @@
 CREATE TABLE quest (
   id  SERIAL PRIMARY KEY,
-  name VARCHAR (30) ,
-  stars smallint default 0,
-  questGiver VARCHAR (30),
-  game VARCHAR (30)
+  name VARCHAR (40) NOT NULL,
+  stars smallint,
+  questGiver VARCHAR (30) NOT NULL,
+  goal VARCHAR (100) NOT NULL,
+  subgoal VARCHAR(100) NOT NULL,
+  game VARCHAR (30) NOT NULL
 );
 
 CREATE TABLE monsterInQuest (

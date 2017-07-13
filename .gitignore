@@ -1,3 +1,8 @@
 /node_modules
 .env
 .dev-env
+0_1_event-guild-quests.sql
+0_2_event-quests.sql
+0_3_village-quests.sql
+0_4_arena-quests.sql
+0_5_special-permit-quests.sql

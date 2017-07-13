@@ -1,8 +1,5 @@
 exports.validations = {
   submission: {
-    get: {
-      type: "object"
-    },
     post: {
       type: "object",
       properties: {
@@ -47,11 +44,6 @@ exports.validations = {
         },
         armorSet: { type: "object" }
       }
-    }
-  },
-  quest: {
-    get: {
-      type: "object"
     }
   }
 }
