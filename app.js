@@ -6,6 +6,7 @@ const bodyParser = require("body-parser")
 require("./db/connect").connect()
 const submissionCtrl = require("./controllers/submissionCtrl")
 const validate = require("./middlewares/validateBody")
+const error = require("./middlewares/errorHandler")
 
 const corsOptions = {
   origin: ["https://monster-hunter-app.herokuapp.com", "http://localhost:3000"],
@@ -27,11 +28,26 @@ app.get("/", (req, res, next) => {
   res.send("hei")
 })
 
-app.get("/submission",  validate.validateBody("submission", "get"), submissionCtrl.getSubmission)
+app.get(
+  "/submission",  
+  validate.validateBody("submission", "get"), 
+  submissionCtrl.getSubmission,
+  error.handleErrors
+)
 
-app.post("/submission", validate.validateBody("submission", "post"), submissionCtrl.postSubmission)
+app.post(
+  "/submission", 
+  validate.validateBody("submission", "post"), 
+  submissionCtrl.postSubmission,
+  error.handleErrors
+)
 
-app.get("/quest", submissionCtrl.getQuestData)
+app.get(
+  "/quest", 
+  validate.validateBody("quest", "get"),
+  submissionCtrl.getQuestData,
+  error.handleErrors
+)
 
 app.listen(port, (err) => {
   if (err) {

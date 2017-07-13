@@ -2,10 +2,9 @@ const Submission = require("../models/Submission")
 const handleErrors = require("../middlewares/errorHandler")
 
 exports.getSubmission = (req, res, next) => {
-  console.log("body: ",req.body)
   Submission.findAll()
     .then((result) => { res.json({ submissions: result.rows }) })
-    .catch((err) => handleErrors)
+    .catch((err) => next())
 }
 
 exports.postSubmission = (req, res, next) => {

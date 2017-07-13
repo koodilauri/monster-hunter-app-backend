@@ -48,5 +48,10 @@ exports.validations = {
         armorSet: { type: "object" }
       }
     }
+  },
+  quest: {
+    get: {
+      type: "object"
+    }
   }
 }
