@@ -2,7 +2,7 @@ CREATE TABLE skill (
   id SERIAL PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
   effect VARCHAR(30) NOT NULL,
-  description VARCHAR(120) NOT NULL
+  description VARCHAR(120) NOT NULL,
   amount smallint NOT NULL
 );
 
