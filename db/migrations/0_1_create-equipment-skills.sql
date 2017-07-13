@@ -30,8 +30,8 @@ CREATE TABLE weapon(
   id SERIAL PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
   slots smallint NOT NULL,
-  class NOT NULL,
-  type NOT NULL,
+  class VARCHAR(30) NOT NULL,
+  type VARCHAR(30) NOT NULL,
   attack smallint NOT NULL,
   affinity smallint NOT NULL
 ); 
