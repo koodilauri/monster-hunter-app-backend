@@ -11,7 +11,11 @@ const Submission = {
     return query(`INSERT INTO submission (name, questid, questtime, weapon, style, created) VALUES ($1, $2, $3, $4, $5, $6)`, [name, questid, questtime, weapon, style, created])
   },
   getQuestList() {
-    return query(`SELECT questgiver, stars, name, quest.id AS value FROM quest`)
+    return query(`SELECT quest.questgiver, stars, quest.name, quest.id AS value, count(questid) FROM submission
+    FULL OUTER JOIN quest
+    ON quest.id = submission.questId
+    GROUP BY questgiver, stars, quest.name, value
+    ORDER BY count(questid) DESC;`)
   }
 }
 

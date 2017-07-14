@@ -1,0 +1,2 @@
+NODE_ENV=development
+DATABASE_URL=postgresql://mh_db_user:1qaz2wsx@localhost:8081/mh_db
