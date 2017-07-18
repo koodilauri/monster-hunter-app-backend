@@ -10,8 +10,15 @@ CREATE TABLE quest (
 
 CREATE TABLE monsterInQuest (
   id SERIAL PRIMARY KEY,
-  questId int references quest(id),
-  monster VARCHAR(30)
+  monster VARCHAR(30) NOT NULL,
+  num smallint NOT NULL,
+  av_hp VARCHAR(10) NOT NULL,
+  stagger VARCHAR(5) NOT NULL,
+  attack VARCHAR(5) NOT NULL,
+  defence VARCHAR(5) NOT NULL,
+  exaust VARCHAR(5) NOT NULL,
+  mount VARCHAR(5) NOT NULL,
+  questId int references quest(id) NOT NULL
 );
 
 GRANT ALL PRIVILEGES ON TABLE quest TO mh_db_user;
