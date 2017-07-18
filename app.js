@@ -35,6 +35,14 @@ app.post("/submission", validate.validateBody("submission", "post"), submissionC
 
 app.get("/quest", submissionCtrl.getQuestData)
 
+app.get("/armor", submissionCtrl.getArmorData)
+
+app.get("/weapon", submissionCtrl.getWeaponData)
+
+app.get("/hunter-art", submissionCtrl.getHunterArtData)
+
+app.get("/skill", submissionCtrl.getSkillData)
+
 app.listen(port, (err) => {
   if (err) {
     console.log(err)
