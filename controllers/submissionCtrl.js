@@ -68,3 +68,9 @@ exports.getHunterArtData = (req, res, next) => {
     .then((result) => { res.json({ arts: result.rows }) })
     .catch((err) => next(err))
 }
+
+exports.getDecorationData = (req, res, next) => {
+  Submission.getDecorations()
+    .then((result) => { res.json({ decorations: result.rows }) })
+    .catch((err) => next(err))
+}

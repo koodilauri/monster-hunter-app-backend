@@ -43,6 +43,8 @@ app.get("/hunter-art", submissionCtrl.getHunterArtData)
 
 app.get("/skill", submissionCtrl.getSkillData)
 
+app.get("/decoration", submissionCtrl.getDecorationData)
+
 app.listen(port, (err) => {
   if (err) {
     console.log(err)
