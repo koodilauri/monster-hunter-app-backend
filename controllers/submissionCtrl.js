@@ -4,7 +4,7 @@ const handleErrors = require("../middlewares/errorHandler")
 exports.getSubmission = (req, res, next) => {
   Submission.findAll()
     .then((result) => { res.json({ submissions: result.rows }) })
-    .catch((err) => next())
+    .catch((err) => next(err))
 }
 
 exports.postSubmission = (req, res, next) => {
@@ -36,35 +36,35 @@ exports.postSubmission = (req, res, next) => {
         }
       })
     })
-    .catch((err) => { console.log(err); res.send(err) })
+    .catch((err) => next(err))
 }
 
 exports.getQuestData = (req, res, next) => {
   Submission.getQuestList()
     .then((result) => { res.json({ items: result.rows }) })
-    .catch((err) => { res.json({ error: error }) })
+    .catch((err) => next(err))
 }
 
 exports.getArmorData = (req, res, next) => {
   Submission.getArmorList()
     .then((result) => { res.json({ armor: result.rows }) })
-    .catch((err) => { res.json({ error: error }) })
+    .catch((err) => next(err))
 }
 
 exports.getWeaponData = (req, res, next) => {
   Submission.getWeaponList()
     .then((result) => { res.json({ weapons: result.rows }) })
-    .catch((err) => { res.json({ error: error }) })
+    .catch((err) => next(err))
 }
 
 exports.getSkillData = (req, res, next) => {
   Submission.getSkillList()
     .then((result) => { res.json({ skills: result.rows }) })
-    .catch((err) => { res.json({ error: error }) })
+    .catch((err) => next(err))
 }
 
 exports.getHunterArtData = (req, res, next) => {
   Submission.getHunterArts()
     .then((result) => { res.json({ arts: result.rows }) })
-    .catch((err) => { res.json({ error: error }) })
+    .catch((err) => next(err))
 }
