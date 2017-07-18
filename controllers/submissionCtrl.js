@@ -44,3 +44,27 @@ exports.getQuestData = (req, res, next) => {
     .then((result) => { res.json({ items: result.rows }) })
     .catch((err) => { res.json({ error: error }) })
 }
+
+exports.getArmorData = (req, res, next) => {
+  Submission.getArmorList()
+    .then((result) => { res.json({ armor: result.rows }) })
+    .catch((err) => { res.json({ error: error }) })
+}
+
+exports.getWeaponData = (req, res, next) => {
+  Submission.getWeaponList()
+    .then((result) => { res.json({ weapons: result.rows }) })
+    .catch((err) => { res.json({ error: error }) })
+}
+
+exports.getSkillData = (req, res, next) => {
+  Submission.getSkillList()
+    .then((result) => { res.json({ skills: result.rows }) })
+    .catch((err) => { res.json({ error: error }) })
+}
+
+exports.getHunterArtData = (req, res, next) => {
+  Submission.getHunterArts()
+    .then((result) => { res.json({ arts: result.rows }) })
+    .catch((err) => { res.json({ error: error }) })
+}

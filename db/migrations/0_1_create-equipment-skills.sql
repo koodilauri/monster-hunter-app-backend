@@ -18,7 +18,13 @@ CREATE TABLE armor (
   thunder smallint NOT NULL,
   ice smallint NOT NULL,
   dragon smallint NOT NULL,
-  rarity smallint NOT NULL
+  rarity smallint NOT NULL,
+  skill1 int REFERENCES skill(id),
+  amount1 smallint,
+  skill2 int REFERENCES skill(id),
+  amount2 smallint,
+  skill3 int REFERENCES skill(id),
+  amount3 smallint
 );
 
 CREATE TABLE decoration (
@@ -57,3 +63,5 @@ CREATE TABLE hunter_art (
   description VARCHAR(230) NOT NULL,
   weapon VARCHAR(15) NOT NULL
 );
+
+GRANT ALL PRIVILEGES ON TABLE skill, armor, decoration, weapon, charm, hunter_art TO mh_db_user;
