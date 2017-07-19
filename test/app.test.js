@@ -31,7 +31,25 @@ describe("app route", () => {
             min: 11,
             sec: 12
           },
-          armorSet: {}
+          armorSet: {
+            setName: 'tt',
+            head: { name: 'headarmor', id: 1 },
+            torso: { name: 'torsoarmor', id: 2 },
+            arms: { name: 'armsarmor', id: 3 },
+            waist: { name: 'waistarmor', id: 4 },
+            feet: { name: 'feetarmor', id: 5 },
+            charm: {
+              slots: '2',
+              skill1: {
+                id: 1
+              },
+              amount1: '-4',
+              skill2: {
+                id: 2
+              },
+              amount2: '13'
+            }
+          }
         })
         .set("Accept", "application/json")
         .expect("Content-Type", /json/)
@@ -41,7 +59,7 @@ describe("app route", () => {
           expect(res.body.newSubmission.questtime).to.equal("00:11:12")
           expect(res.body.newSubmission.weapon).to.equal("Hammer")
           expect(res.body.newSubmission.style).to.equal("Guild")
-          expect(res.body.newSubmission.setid).to.equal(null)
+          expect(res.body.newSubmission.setid).to.equal(1)
         })
         .expect(200, done)
     })

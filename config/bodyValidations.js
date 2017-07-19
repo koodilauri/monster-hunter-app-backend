@@ -23,7 +23,7 @@ exports.validations = {
             },
             weapon: {
               type: "string",
-              pattern: /^([a-zA-Z0-9']+(-| )?)*$/i
+              pattern: /^([a-zA-Z0-9':&"!?,.]+(-| )?)*$/i
             },
             style: {
               type: "string",

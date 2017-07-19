@@ -4,7 +4,7 @@ const cors = require("cors")
 const app = express()
 const bodyParser = require("body-parser")
 require("./db/connect").connect()
-const submissionCtrl = require("./controllers/submissionCtrl")
+const submissionCtrl = require("./controllers/submission")
 const validate = require("./middlewares/validateBody")
 const errorHandler = require("./middlewares/errorHandler")
 
@@ -23,7 +23,6 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 app.use(cors(corsOptions))
-app.use(errorHandler.handleErrors)
 
 app.get("/", (req, res, next) => {
   res.send("hei")
@@ -44,6 +43,8 @@ app.get("/hunter-art", submissionCtrl.getHunterArtData)
 app.get("/skill", submissionCtrl.getSkillData)
 
 app.get("/decoration", submissionCtrl.getDecorationData)
+
+app.use(errorHandler.handleErrors)
 
 app.listen(port, (err) => {
   if (err) {
