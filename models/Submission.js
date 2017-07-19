@@ -55,7 +55,7 @@ const Submission = {
   },
   addArmorSet(head_id, torso_id, arms_id, waist_id, feet_id, charm_id) {
     return query(`INSERT INTO armorset (head_id, torso_id, arms_id, waist_id, feet_id, charm_id) VALUES ($1, $2, $3, $4, $5, $6)
-    ON CONFLICT (head_id, torso_id, arms_id, waist_id, feet_id) DO UPDATE SET head_id=EXCLUDED.head_id
+    ON CONFLICT (head_id, torso_id, arms_id, waist_id, feet_id, charm_id) DO UPDATE SET head_id=EXCLUDED.head_id
     RETURNING id`, [head_id, torso_id, arms_id, waist_id, feet_id, charm_id])
   },
   addCharm(slots, skill1, skill2, amount1, amount2){
