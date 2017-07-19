@@ -1,6 +1,6 @@
 CREATE TABLE armorset (
   id  SERIAL PRIMARY KEY,
-  name VARCHAR(30) NOT NULL,
+  name VARCHAR(30),
   head_id int references armor(id) ,
   torso_id int references armor(id) ,
   arms_id int references armor(id) ,
