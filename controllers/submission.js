@@ -9,8 +9,6 @@ exports.getSubmission = (req, res, next) => {
 
 exports.postSubmission = (req, res, next) => {
   let questTime = "00:"
-  let armorID
-  let charmID
   if (req.body.newSubmission.min >= 10) {
     questTime = questTime + req.body.newSubmission.min + ":"
   } else {
