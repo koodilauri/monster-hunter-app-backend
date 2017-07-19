@@ -29,11 +29,29 @@ const Submission = {
   getHunterArts() {
     return query(`SELECT * from hunter_art;`)
   },
+  getDecorations() {
+    return query(`SELECT decoration.*, skill.name AS skillname FROM decoration
+    JOIN skill
+    ON skill.id = decoration.skill1id;`)
+  },
   getWeaponList() {
     return query(`SELECT * from weapon;`)
   },
   getSkillList() {
     return query(`SELECT * from skill;`)
+  },
+  getArmorsetList() {
+    return query(`SELECT A.name AS head, B.name AS torso, C.name AS arms, D.name AS waist, E.name AS feet FROM armorset
+    JOIN armor A
+    ON head_id = A.id
+    JOIN armor B
+    ON torso_id = B.id
+    JOIN armor C
+    ON arms_id = C.id
+    JOIN armor D
+    ON waist_id = D.id
+    JOIN armor E
+    ON feet_id = E.id;`)
   }
 }
 
