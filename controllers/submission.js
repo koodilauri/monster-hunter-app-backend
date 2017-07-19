@@ -8,8 +8,8 @@ exports.getSubmission = (req, res, next) => {
 }
 
 exports.postSubmission = (req, res, next) => {
-  if (!req.body) return res.sendStatus(400)
   let questTime = "00:"
+  let armorID
   if (req.body.newSubmission.min >= 10) {
     questTime = questTime + req.body.newSubmission.min + ":"
   } else {
@@ -21,22 +21,28 @@ exports.postSubmission = (req, res, next) => {
     questTime = questTime + "0" + req.body.newSubmission.sec
   }
 
-  const time = new Date()
-  Submission.addOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weapon, req.body.newSubmission.style, time)
-    .then((result) => {
-      res.send({
-        newSubmission: {
-          name: req.body.newSubmission.name,
-          questname: req.body.newSubmission.questName,
-          questtime: questTime,
-          weapon: req.body.newSubmission.weapon,
-          style: req.body.newSubmission.style,
-          created: time,
-          setid: null
-        }
-      })
+  Submission.addArmorSet(req.body.armorSet.head.id, req.body.armorSet.torso.id, req.body.armorSet.arms.id, req.body.armorSet.waist.id, req.body.armorSet.feet.id)
+    .then(result => {
+      armorID = result.rows[0].id
+      console.log("armorset id: ", result.rows)
+      const time = new Date()
+      Submission.addOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weapon, req.body.newSubmission.style, time, armorID)
+        .then((result) => {
+          res.send({
+            newSubmission: {
+              name: req.body.newSubmission.name,
+              questname: req.body.newSubmission.questName,
+              questtime: questTime,
+              weapon: req.body.newSubmission.weapon,
+              style: req.body.newSubmission.style,
+              created: time,
+              setid: armorID
+            }
+          })
+        })
+        .catch((err) => next(err))
     })
-    .catch((err) => next(err))
+
 }
 
 exports.getQuestData = (req, res, next) => {

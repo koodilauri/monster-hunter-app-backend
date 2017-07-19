@@ -6,9 +6,9 @@ const Submission = {
     JOIN quest
     ON quest.id = submission.questId`)
   },
-  addOne(name, questid, questtime, weapon, style, created) {
+  addOne(name, questid, questtime, weapon, style, created, setID) {
     // const string = "INSERT INTO submission (name, quest, questtime, weapon, style, created) VALUES ('"+name+"', '"+quest+"', '"+questtime+"', '"+weapon+"', '"+style+"', '"+created+"')";
-    return query(`INSERT INTO submission (name, questid, questtime, weapon, style, created) VALUES ($1, $2, $3, $4, $5, $6)`, [name, questid, questtime, weapon, style, created])
+    return query(`INSERT INTO submission (name, questid, questtime, weapon, style, created, setID) VALUES ($1, $2, $3, $4, $5, $6, $7)`, [name, questid, questtime, weapon, style, created, setID])
   },
   getQuestList() {
     return query(`SELECT quest.questgiver, stars, quest.name, quest.id AS value, count(questid) FROM submission
@@ -52,6 +52,19 @@ const Submission = {
     ON waist_id = D.id
     JOIN armor E
     ON feet_id = E.id;`)
+  },
+  addArmorSet(head_id, torso_id, arms_id, waist_id, feet_id) {
+    return query(`INSERT INTO armorset (head_id, torso_id, arms_id, waist_id, feet_id) VALUES ($1, $2, $3, $4, $5)
+    ON CONFLICT (head_id, torso_id, arms_id, waist_id, feet_id) DO UPDATE SET head_id=EXCLUDED.head_id
+    RETURNING id`, [head_id, torso_id, arms_id, waist_id, feet_id])
+  },
+  getOneSet(head_id, torso_id, arms_id, waist_id, feet_id) {
+    return query(`SELECT * FROM armorset
+    WHERE head_id = $1
+    AND torso_id = $2
+    AND arms_id = $3
+    AND waist_id = $4
+    AND feet_id = $5`, [head_id, torso_id, arms_id, waist_id, feet_id])
   }
 }
 
