@@ -59,7 +59,7 @@ describe("app route", () => {
           expect(res.body.newSubmission.questtime).to.equal("00:11:12")
           expect(res.body.newSubmission.weapon).to.equal("Hammer")
           expect(res.body.newSubmission.style).to.equal("Guild")
-          expect(res.body.newSubmission.setid).to.equal(null)
+          expect(res.body.newSubmission.setid).to.equal(1)
         })
         .expect(200, done)
     })
