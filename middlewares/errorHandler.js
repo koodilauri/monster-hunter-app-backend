@@ -17,7 +17,7 @@ exports.handleErrors = (err, req, res, next) => {
       }
     } else {
       const message = err.message ? err.message : "Internal server error.";
-      res.status(statusCode).send(message);
+      res.status(statusCode).json({ "error": message });
     }
   } else {
     next();
