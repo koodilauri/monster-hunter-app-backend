@@ -53,18 +53,15 @@ const Submission = {
     JOIN armor E
     ON feet_id = E.id;`)
   },
-  addArmorSet(head_id, torso_id, arms_id, waist_id, feet_id) {
-    return query(`INSERT INTO armorset (head_id, torso_id, arms_id, waist_id, feet_id) VALUES ($1, $2, $3, $4, $5)
+  addArmorSet(head_id, torso_id, arms_id, waist_id, feet_id, charm_id) {
+    return query(`INSERT INTO armorset (head_id, torso_id, arms_id, waist_id, feet_id, charm_id) VALUES ($1, $2, $3, $4, $5, $6)
     ON CONFLICT (head_id, torso_id, arms_id, waist_id, feet_id) DO UPDATE SET head_id=EXCLUDED.head_id
-    RETURNING id`, [head_id, torso_id, arms_id, waist_id, feet_id])
+    RETURNING id`, [head_id, torso_id, arms_id, waist_id, feet_id, charm_id])
   },
-  getOneSet(head_id, torso_id, arms_id, waist_id, feet_id) {
-    return query(`SELECT * FROM armorset
-    WHERE head_id = $1
-    AND torso_id = $2
-    AND arms_id = $3
-    AND waist_id = $4
-    AND feet_id = $5`, [head_id, torso_id, arms_id, waist_id, feet_id])
+  addCharm(slots, skill1, skill2, amount1, amount2){
+    return query(`INSERT INTO charm (slots, skill1id, skill2id, bonus1, bonus2) VALUES ($1, $2, $3, $4, $5)
+    ON CONFLICT (slots, skill1id, skill2id, bonus1, bonus2) DO UPDATE SET slots=EXCLUDED.slots
+    RETURNING id`, [slots, skill1, skill2, amount1, amount2])
   }
 }
 

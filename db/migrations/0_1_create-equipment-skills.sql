@@ -53,7 +53,8 @@ CREATE TABLE charm (
   skill1id int REFERENCES skill(id) NOT NULL,
   skill2id int REFERENCES skill(id),
   bonus1 smallint NOT NULL,
-  bonus2 smallint NOT NULL
+  bonus2 smallint NOT NULL,
+  CONSTRAINT unique_charm UNIQUE (slots, skill1id, skill2id, bonus1, bonus2)
 );
 
 CREATE TABLE hunter_art (
