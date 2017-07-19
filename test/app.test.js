@@ -48,8 +48,7 @@ describe("app route", () => {
                 id: 2
               },
               amount2: '13'
-            },
-            decorations: NULL
+            }
           }
         })
         .set("Accept", "application/json")
