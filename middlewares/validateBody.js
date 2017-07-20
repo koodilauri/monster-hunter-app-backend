@@ -4,7 +4,9 @@ const errors = require("../config/errors")
 const validations = require("../config/bodyValidations").validations
 
 exports.validateBody = (name, schema) => (req, res, next) => {
-  console.log("body: ",req.body)
+  if (process.env.NODE_ENV === "development") {
+    console.log("body: ", req.body)
+  }
   const validation = _.get(validations, `${name}.${schema}`)
   const result = inspector.validate(validation, req.body)
   if (result.error.length !== 0) {

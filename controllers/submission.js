@@ -41,41 +41,4 @@ exports.postSubmission = (req, res, next) => {
       })
     })
     .catch((err) => next(err))
-
-}
-
-exports.getQuestData = (req, res, next) => {
-  Submission.getQuestList()
-    .then((result) => { res.json({ items: result.rows }) })
-    .catch((err) => next(err))
-}
-
-exports.getArmorData = (req, res, next) => {
-  Submission.getArmorList()
-    .then((result) => { res.json({ armor: result.rows }) })
-    .catch((err) => next(err))
-}
-
-exports.getWeaponData = (req, res, next) => {
-  Submission.getWeaponList()
-    .then((result) => { res.json({ weapons: result.rows }) })
-    .catch((err) => next(err))
-}
-
-exports.getSkillData = (req, res, next) => {
-  Submission.getSkillList()
-    .then((result) => { res.json({ skills: result.rows }) })
-    .catch((err) => next(err))
-}
-
-exports.getHunterArtData = (req, res, next) => {
-  Submission.getHunterArts()
-    .then((result) => { res.json({ arts: result.rows }) })
-    .catch((err) => next(err))
-}
-
-exports.getDecorationData = (req, res, next) => {
-  Submission.getDecorations()
-    .then((result) => { res.json({ decorations: result.rows }) })
-    .catch((err) => next(err))
 }
