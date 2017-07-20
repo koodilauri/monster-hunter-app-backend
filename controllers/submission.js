@@ -19,32 +19,28 @@ exports.postSubmission = (req, res, next) => {
   } else {
     questTime = questTime + "0" + req.body.newSubmission.sec
   }
+  const time = new Date()
   Submission.addCharm(req.body.armorSet.charm.slots, req.body.armorSet.charm.skill1.id, req.body.armorSet.charm.skill2.id, req.body.armorSet.charm.amount1, req.body.armorSet.charm.amount2)
-    .then(result => {
-      charmID = result.rows[0].id
-      console.log("charm id: ", result.rows)
-      Submission.addArmorSet(req.body.armorSet.head.id, req.body.armorSet.torso.id, req.body.armorSet.arms.id, req.body.armorSet.waist.id, req.body.armorSet.feet.id, charmID)
-        .then(result => {
-          armorID = result.rows[0].id
-          console.log("armorset id: ", result.rows)
-          const time = new Date()
-          Submission.addOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weapon, req.body.newSubmission.style, time, armorID)
-            .then((result) => {
-              res.send({
-                newSubmission: {
-                  name: req.body.newSubmission.name,
-                  questname: req.body.newSubmission.questName,
-                  questtime: questTime,
-                  weapon: req.body.newSubmission.weapon,
-                  style: req.body.newSubmission.style,
-                  created: time,
-                  setid: armorID
-                }
-              })
-            })
-            .catch((err) => next(err))
-        })
+    .then(result1 =>
+      Submission.addArmorSet(req.body.armorSet.head.id, req.body.armorSet.torso.id, req.body.armorSet.arms.id, req.body.armorSet.waist.id, req.body.armorSet.feet.id, result1.rows[0].id)
+    )
+    .then(result2 =>
+      Submission.addOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weapon, req.body.newSubmission.style, time, result2.rows[0].id)
+    )
+    .then((result3) => {
+      res.send({
+        newSubmission: {
+          name: result3.rows[0].name,
+          questname: req.body.newSubmission.questName,
+          questtime: result3.rows[0].questtime,
+          weapon: result3.rows[0].weapon,
+          style: result3.rows[0].style,
+          created: result3.rows[0].created,
+          setid: result3.rows[0].setID
+        }
+      })
     })
+    .catch((err) => next(err))
 
 }
 
