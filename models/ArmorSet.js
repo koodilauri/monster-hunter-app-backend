@@ -2,7 +2,7 @@ const query = require("../db/connect").query
 
 const ArmorSet = {
   getArmorSetList() {
-    return query(`SELECT armoset.*, A.name AS head, B.name AS torso, C.name AS arms, D.name AS waist, E.name AS feet FROM armorset
+    return query(`SELECT armorset.*, A.name AS head, B.name AS torso, C.name AS arms, D.name AS waist, E.name AS feet FROM armorset
     JOIN armor A
     ON head_id = A.id
     JOIN armor B
