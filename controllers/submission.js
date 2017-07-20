@@ -36,7 +36,7 @@ exports.postSubmission = (req, res, next) => {
           weapon: result3.rows[0].weapon,
           style: result3.rows[0].style,
           created: result3.rows[0].created,
-          setid: result3.rows[0].setID
+          setid: result3.rows[0].setid
         }
       })
     })
