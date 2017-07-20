@@ -1,4 +1,6 @@
 const Submission = require("../models/Submission")
+const ArmorSet = require("../models/ArmorSet")
+const Charm = require("../models/Charm")
 const handleErrors = require("../middlewares/errorHandler")
 
 exports.getSubmission = (req, res, next) => {
@@ -19,13 +21,14 @@ exports.postSubmission = (req, res, next) => {
   } else {
     questTime = questTime + "0" + req.body.newSubmission.sec
   }
+  if (req.body.armorSet.charm.skill2.id === "null") req.body.armorSet.charm.skill2.id = null
   const time = new Date()
-  Submission.addCharm(req.body.armorSet.charm.slots, req.body.armorSet.charm.skill1.id, req.body.armorSet.charm.skill2.id, req.body.armorSet.charm.amount1, req.body.armorSet.charm.amount2)
+  Charm.saveOrUpdateOne(req.body.armorSet.charm.slots, req.body.armorSet.charm.skill1.id, req.body.armorSet.charm.skill2.id, req.body.armorSet.charm.amount1, req.body.armorSet.charm.amount2)
     .then(result1 =>
-      Submission.addArmorSet(req.body.armorSet.head.id, req.body.armorSet.torso.id, req.body.armorSet.arms.id, req.body.armorSet.waist.id, req.body.armorSet.feet.id, result1.rows[0].id)
+      ArmorSet.saveOrUpdateOne(req.body.armorSet.head.id, req.body.armorSet.torso.id, req.body.armorSet.arms.id, req.body.armorSet.waist.id, req.body.armorSet.feet.id, result1.rows[0].id)
     )
     .then(result2 =>
-      Submission.addOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weapon, req.body.newSubmission.style, time, result2.rows[0].id)
+      Submission.saveOrUpdateOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weapon, req.body.newSubmission.style, time, result2.rows[0].id)
     )
     .then((result3) => {
       res.send({
