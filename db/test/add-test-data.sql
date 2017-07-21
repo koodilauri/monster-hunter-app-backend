@@ -7,8 +7,8 @@ INSERT INTO quest (name, stars, questGiver, goal, subgoal, game) VALUES('Boot to
 
 INSERT INTO weapon (name, class, type) VALUES('Akantor Broadsword', 'Great Sword', 'Blade Master');	INSERT INTO weapon (name, class, type) VALUES('Akantor Kingsword', 'Great Sword', 'Blade Master');
 
-INSERT INTO submission (name, questId, questtime, weapon, style, created) VALUES ('lauri', 1, '00:05:31', 1, 'adept', '2017-06-12');
-INSERT INTO submission (name, questId, questtime, weapon, style, created) VALUES ('bob', 2, '00:06:02', 1, 'striker', '2017-06-13');
+INSERT INTO submission (name, questId, questtime, weaponId, style, created) VALUES ('lauri', 1, '00:05:31', 1, 'adept', '2017-06-12');
+INSERT INTO submission (name, questId, questtime, weaponId, style, created) VALUES ('bob', 2, '00:06:02', 1, 'striker', '2017-06-13');
 
 INSERT INTO skill (name) VALUES('Ammo Saver');
 INSERT INTO skill (name) VALUES('Anti-Theft');
