@@ -1,6 +1,11 @@
 CREATE TABLE skill (
+  id SERIAL PRIMARY key,
+  name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE skill_effect (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(30) NOT NULL,
+  skill_id int REFERENCES skill(id) NOT NULL,
   effect VARCHAR(30) NOT NULL,
   description VARCHAR(120) NOT NULL,
   amount smallint NOT NULL
@@ -53,9 +58,10 @@ CREATE TABLE charm (
   skill1id int REFERENCES skill(id) NOT NULL,
   skill2id int REFERENCES skill(id),
   bonus1 smallint NOT NULL,
-  bonus2 smallint NOT NULL,
-  CONSTRAINT unique_charm UNIQUE (slots, skill1id, skill2id, bonus1, bonus2)
+  bonus2 smallint NOT NULL
 );
+
+ALTER TABLE charm ADD CONSTRAINT unique_charm UNIQUE (slots, skill1id, skill2id, bonus1, bonus2);
 
 CREATE TABLE hunter_art (
   id SERIAL PRIMARY KEY,

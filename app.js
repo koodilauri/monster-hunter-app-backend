@@ -5,6 +5,12 @@ const app = express()
 const bodyParser = require("body-parser")
 require("./db/connect").connect()
 const submissionCtrl = require("./controllers/submission")
+const armorCtrl = require("./controllers/armor")
+const decorationCtrl = require("./controllers/decoration")
+const hunterArtCtrl = require("./controllers/hunterArt")
+const questCtrl = require("./controllers/quest")
+const skillCtrl = require("./controllers/skill")
+const weaponCtrl = require("./controllers/weapon")
 const validate = require("./middlewares/validateBody")
 const errorHandler = require("./middlewares/errorHandler")
 
@@ -32,17 +38,17 @@ app.get("/submission", submissionCtrl.getSubmission)
 
 app.post("/submission", validate.validateBody("submission", "post"), submissionCtrl.postSubmission)
 
-app.get("/quest", submissionCtrl.getQuestData)
+app.get("/quest", questCtrl.getQuestData)
 
-app.get("/armor", submissionCtrl.getArmorData)
+app.get("/armor", armorCtrl.getArmorData)
 
-app.get("/weapon", submissionCtrl.getWeaponData)
+app.get("/weapon", weaponCtrl.getWeaponData)
 
-app.get("/hunter-art", submissionCtrl.getHunterArtData)
+app.get("/hunter-art", hunterArtCtrl.getHunterArtData)
 
-app.get("/skill", submissionCtrl.getSkillData)
+app.get("/skill", skillCtrl.getSkillData)
 
-app.get("/decoration", submissionCtrl.getDecorationData)
+app.get("/decoration", decorationCtrl.getDecorationData)
 
 app.use(errorHandler.handleErrors)
 

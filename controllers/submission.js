@@ -1,4 +1,6 @@
 const Submission = require("../models/Submission")
+const ArmorSet = require("../models/ArmorSet")
+const Charm = require("../models/Charm")
 const handleErrors = require("../middlewares/errorHandler")
 
 exports.getSubmission = (req, res, next) => {
@@ -19,67 +21,31 @@ exports.postSubmission = (req, res, next) => {
   } else {
     questTime = questTime + "0" + req.body.newSubmission.sec
   }
-  Submission.addCharm(req.body.armorSet.charm.slots, req.body.armorSet.charm.skill1.id, req.body.armorSet.charm.skill2.id, req.body.armorSet.charm.amount1, req.body.armorSet.charm.amount2)
-    .then(result => {
-      charmID = result.rows[0].id
-      console.log("charm id: ", result.rows)
-      Submission.addArmorSet(req.body.armorSet.head.id, req.body.armorSet.torso.id, req.body.armorSet.arms.id, req.body.armorSet.waist.id, req.body.armorSet.feet.id, charmID)
-        .then(result => {
-          armorID = result.rows[0].id
-          console.log("armorset id: ", result.rows)
-          const time = new Date()
-          Submission.addOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weapon, req.body.newSubmission.style, time, armorID)
-            .then((result) => {
-              res.send({
-                newSubmission: {
-                  name: req.body.newSubmission.name,
-                  questname: req.body.newSubmission.questName,
-                  questtime: questTime,
-                  weapon: req.body.newSubmission.weapon,
-                  style: req.body.newSubmission.style,
-                  created: time,
-                  setid: armorID
-                }
-              })
-            })
-            .catch((err) => next(err))
-        })
+  if (req.body.armorSet.head.name === "") req.body.armorSet.head.id = 1
+  if (req.body.armorSet.torso.name === "") req.body.armorSet.torso.id = 2
+  if (req.body.armorSet.arms.name === "") req.body.armorSet.arms.id = 3
+  if (req.body.armorSet.waist.name === "") req.body.armorSet.waist.id = 4
+  if (req.body.armorSet.feet.name === "") req.body.armorSet.feet.id = 5    
+  const time = new Date()
+  Charm.saveOrUpdateOne(req.body.armorSet.charm.slots, req.body.armorSet.charm.skill1.id, req.body.armorSet.charm.skill2.id, req.body.armorSet.charm.amount1, req.body.armorSet.charm.amount2)
+    .then(result1 =>
+      ArmorSet.saveOrUpdateOne(req.body.armorSet.head.id, req.body.armorSet.torso.id, req.body.armorSet.arms.id, req.body.armorSet.waist.id, req.body.armorSet.feet.id, result1.rows[0].id)
+    )
+    .then(result2 =>
+      Submission.saveOrUpdateOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weaponId, req.body.newSubmission.style, time, result2.rows[0].id)
+    )
+    .then((result3) => {
+      res.send({
+        newSubmission: {
+          name: result3.rows[0].name,
+          questname: req.body.newSubmission.questName,
+          questtime: result3.rows[0].questtime,
+          weaponname: req.body.newSubmission.weapon,
+          style: result3.rows[0].style,
+          created: result3.rows[0].created,
+          setid: result3.rows[0].setid
+        }
+      })
     })
-
-}
-
-exports.getQuestData = (req, res, next) => {
-  Submission.getQuestList()
-    .then((result) => { res.json({ items: result.rows }) })
-    .catch((err) => next(err))
-}
-
-exports.getArmorData = (req, res, next) => {
-  Submission.getArmorList()
-    .then((result) => { res.json({ armor: result.rows }) })
-    .catch((err) => next(err))
-}
-
-exports.getWeaponData = (req, res, next) => {
-  Submission.getWeaponList()
-    .then((result) => { res.json({ weapons: result.rows }) })
-    .catch((err) => next(err))
-}
-
-exports.getSkillData = (req, res, next) => {
-  Submission.getSkillList()
-    .then((result) => { res.json({ skills: result.rows }) })
-    .catch((err) => next(err))
-}
-
-exports.getHunterArtData = (req, res, next) => {
-  Submission.getHunterArts()
-    .then((result) => { res.json({ arts: result.rows }) })
-    .catch((err) => next(err))
-}
-
-exports.getDecorationData = (req, res, next) => {
-  Submission.getDecorations()
-    .then((result) => { res.json({ decorations: result.rows }) })
     .catch((err) => next(err))
 }

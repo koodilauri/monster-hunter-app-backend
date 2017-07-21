@@ -25,6 +25,9 @@ exports.validations = {
               type: "string",
               pattern: /^([a-zA-Z0-9':&"!?,.]+(-| )?)*$/i
             },
+            weaponId: {
+              type: 'number'
+            },
             style: {
               type: "string",
               pattern: /^([a-zA-Z0-9']+(-| )?)*$/i,
