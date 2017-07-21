@@ -21,7 +21,11 @@ exports.postSubmission = (req, res, next) => {
   } else {
     questTime = questTime + "0" + req.body.newSubmission.sec
   }
-  if (req.body.armorSet.charm.skill2.id === "null") req.body.armorSet.charm.skill2.id = null
+  if (req.body.armorSet.head.name === "") req.body.armorSet.head.id = 1
+  if (req.body.armorSet.torso.name === "") req.body.armorSet.torso.id = 2
+  if (req.body.armorSet.arms.name === "") req.body.armorSet.arms.id = 3
+  if (req.body.armorSet.waist.name === "") req.body.armorSet.waist.id = 4
+  if (req.body.armorSet.feet.name === "") req.body.armorSet.feet.id = 5    
   const time = new Date()
   Charm.saveOrUpdateOne(req.body.armorSet.charm.slots, req.body.armorSet.charm.skill1.id, req.body.armorSet.charm.skill2.id, req.body.armorSet.charm.amount1, req.body.armorSet.charm.amount2)
     .then(result1 =>
