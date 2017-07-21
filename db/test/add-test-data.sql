@@ -19,5 +19,5 @@ INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, 
 INSERT INTO charm (slots, skill1id, skill2id, bonus1, bonus2) VALUES(1,1,2,3,4);
 INSERT INTO armorset (head_id, torso_id, arms_id, waist_id, feet_id, charm_id) VALUES(1,2,3,4,5,1);
 
-INSERT INTO submission (name, questId, questtime, weaponId, style, created setid) VALUES ('lauri', 1, '00:05:31', 1, 'adept', '2017-06-12',1);
-INSERT INTO submission (name, questId, questtime, weaponId, style, created setid) VALUES ('bob', 2, '00:06:02', 1, 'striker', '2017-06-13',1);
+INSERT INTO submission (name, questId, questtime, weaponId, style, created, setid) VALUES ('lauri', 1, '00:05:31', 1, 'adept', '2017-06-12',1);
+INSERT INTO submission (name, questId, questtime, weaponId, style, created, setid) VALUES ('bob', 2, '00:06:02', 1, 'striker', '2017-06-13',1);
