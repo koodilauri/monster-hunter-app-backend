@@ -32,7 +32,7 @@ exports.postSubmission = (req, res, next) => {
       ArmorSet.saveOrUpdateOne(req.body.armorSet.head.id, req.body.armorSet.torso.id, req.body.armorSet.arms.id, req.body.armorSet.waist.id, req.body.armorSet.feet.id, result1.rows[0].id)
     )
     .then(result2 =>
-      Submission.saveOrUpdateOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weapon, req.body.newSubmission.style, time, result2.rows[0].id)
+      Submission.saveOrUpdateOne(req.body.newSubmission.name, req.body.newSubmission.questId, questTime, req.body.newSubmission.weaponId, req.body.newSubmission.style, time, result2.rows[0].id)
     )
     .then((result3) => {
       res.send({
@@ -40,7 +40,7 @@ exports.postSubmission = (req, res, next) => {
           name: result3.rows[0].name,
           questname: req.body.newSubmission.questName,
           questtime: result3.rows[0].questtime,
-          weapon: result3.rows[0].weapon,
+          weaponname: req.body.newSubmission.weapon,
           style: result3.rows[0].style,
           created: result3.rows[0].created,
           setid: result3.rows[0].setid
