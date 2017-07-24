@@ -10,23 +10,29 @@ exports.validations = {
               type: "string",
               pattern: /^([a-zA-Z0-9':!?]+(-| )?)*$/i
             },
-            questName: {
-              type: "string",
-              pattern: /^([a-zA-Z0-9':!?]+(-| )?)*$/i
-            },
-            questId: {
-              type: 'number'
+            quest: {
+              name: {
+                type: "string",
+                pattern: /^([a-zA-Z0-9':!?]+(-| )?)*$/i
+              },
+              id: {
+                type: 'number',
+                gt: 0
+              }
             },
             questTime: {
               type: 'any',
               optional: true
             },
             weapon: {
-              type: "string",
-              pattern: /^([a-zA-Z0-9':&"!?,.]+(-| )?)*$/i
-            },
-            weaponId: {
-              type: 'number'
+              name: {
+                type: "string",
+                pattern: /^([a-zA-Z0-9':&"!?,.]+(-| )?)*$/i
+              },
+              id: {
+                type: 'number',
+                gt: 0
+              }
             },
             style: {
               type: "string",
@@ -45,7 +51,34 @@ exports.validations = {
             }
           }
         },
-        armorSet: { type: "object" }
+        armorSet: { type: "object" },
+        selectedQuest: {
+          type: "object",
+          properties: {
+            name: {
+              type: "string",
+              pattern: /^([a-zA-Z0-9':!?]+(-| )?)*$/i
+            },
+            id: {
+              type: 'number',
+              gt: 0
+            }
+          }
+        }
+        ,
+        selectedWeapon: {
+          type: "object",
+          properties: {
+            name: {
+              type: "string",
+              pattern: /^([a-zA-Z0-9':&"!?,.]+(-| )?)*$/i
+            },
+            id: {
+              type: 'number',
+              gt: 0
+            }
+          }
+        }
       }
     }
   }
