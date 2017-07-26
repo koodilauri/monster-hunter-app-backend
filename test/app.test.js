@@ -70,13 +70,13 @@ describe("app route", () => {
     })
   })
   describe("GET /quest", () => {
-    it("should return all 6 quests", (done) => {
+    it("should return all 8 quests", (done) => {
       request(app)
         .get("/quest")
         .set("Accept", "application/json")
         .expect("Content-Type", /json/)
         .expect((res) => {
-          expect(res.body.items.length).to.equal(6)
+          expect(res.body.items.length).to.equal(8)
         })
         .expect(200, done)
     })
