@@ -24,10 +24,14 @@ describe("app route", () => {
         .send({
           newSubmission: {
             name: "lauri",
-            questName: "Harvest Tour: Jurassic Frontier",
-            questId: 1,
-            weapon: "Hammer",
-            weaponId: 1,
+            quest: {
+              name: "Harvest Tour: Jurassic Frontier",
+              id: 1
+            },
+            weapon: {
+              name: "Hammer",
+              id: 1
+            },
             style: "Guild",
             min: 11,
             sec: 12

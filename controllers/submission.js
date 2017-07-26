@@ -32,15 +32,15 @@ exports.postSubmission = (req, res, next) => {
       ArmorSet.saveOrUpdateOne(req.body.armorSet.head.id, req.body.armorSet.torso.id, req.body.armorSet.arms.id, req.body.armorSet.waist.id, req.body.armorSet.feet.id, result1.rows[0].id)
     )
     .then(result2 =>
-      Submission.saveOrUpdateOne(req.body.newSubmission.name, req.body.selectedQuest.id, questTime, req.body.selectedWeapon.id, req.body.newSubmission.style, time, result2.rows[0].id)
+      Submission.saveOrUpdateOne(req.body.newSubmission.name, req.body.newSubmission.quest.id, questTime, req.body.newSubmission.weapon.id, req.body.newSubmission.style, time, result2.rows[0].id)
     )
     .then((result3) => {
       res.send({
         newSubmission: {
           name: result3.rows[0].name,
-          questname: req.body.selectedQuest.name,
+          questname: req.body.newSubmission.quest.name,
           questtime: result3.rows[0].questtime,
-          weaponname: req.body.selectedWeapon.name,
+          weaponname: req.body.newSubmission.weapon.name,
           style: result3.rows[0].style,
           created: result3.rows[0].created,
           setid: result3.rows[0].setid

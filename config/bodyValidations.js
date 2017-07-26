@@ -52,33 +52,6 @@ exports.validations = {
           }
         },
         armorSet: { type: "object" },
-        selectedQuest: {
-          type: "object",
-          properties: {
-            name: {
-              type: "string",
-              pattern: /^([a-zA-Z0-9':!?]+(-| )?)*$/i
-            },
-            id: {
-              type: 'number',
-              gt: 0
-            }
-          }
-        }
-        ,
-        selectedWeapon: {
-          type: "object",
-          properties: {
-            name: {
-              type: "string",
-              pattern: /^([a-zA-Z0-9':&"!?,.]+(-| )?)*$/i
-            },
-            id: {
-              type: 'number',
-              gt: 0
-            }
-          }
-        }
       }
     }
   }
