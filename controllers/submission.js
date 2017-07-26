@@ -11,21 +11,37 @@ exports.getSubmission = (req, res, next) => {
 
 exports.postSubmission = (req, res, next) => {
   let questTime = "00:"
-  if (req.body.newSubmission.min >= 10) {
-    questTime = questTime + req.body.newSubmission.min + ":"
+  if (req.body.newSubmission.minutes >= 10) {
+    questTime = questTime + req.body.newSubmission.minutes + ":"
   } else {
-    questTime = questTime + "0" + req.body.newSubmission.min + ":"
+    questTime = questTime + "0" + req.body.newSubmission.minutes + ":"
   }
-  if (req.body.newSubmission.sec >= 10) {
-    questTime = questTime + req.body.newSubmission.sec
+  if (req.body.newSubmission.seconds >= 10) {
+    questTime = questTime + req.body.newSubmission.seconds
   } else {
-    questTime = questTime + "0" + req.body.newSubmission.sec
+    questTime = questTime + "0" + req.body.newSubmission.seconds
   }
-  if (req.body.armorSet.head.name === "") req.body.armorSet.head.id = 1
-  if (req.body.armorSet.torso.name === "") req.body.armorSet.torso.id = 2
-  if (req.body.armorSet.arms.name === "") req.body.armorSet.arms.id = 3
-  if (req.body.armorSet.waist.name === "") req.body.armorSet.waist.id = 4
-  if (req.body.armorSet.feet.name === "") req.body.armorSet.feet.id = 5
+  const dummyCharm = {
+    slots: 0,
+    skill1: 149,
+    skill2: 149,
+    bonus2: 0,
+    bonus2: 0
+  }
+  const dummyArmorSet = {
+    head: 1,
+    torso: 2,
+    arms: 3,
+    waist: 4,
+    feet: 5
+  }
+  if (req.body.armorSet) {
+    if (req.body.armorSet.head.name === "") req.body.armorSet.head.id = 1
+    if (req.body.armorSet.torso.name === "") req.body.armorSet.torso.id = 2
+    if (req.body.armorSet.arms.name === "") req.body.armorSet.arms.id = 3
+    if (req.body.armorSet.waist.name === "") req.body.armorSet.waist.id = 4
+    if (req.body.armorSet.feet.name === "") req.body.armorSet.feet.id = 5
+  }
   const time = new Date()
   Charm.saveOrUpdateOne(req.body.armorSet.charm.slots, req.body.armorSet.charm.skill1.id, req.body.armorSet.charm.skill2.id, req.body.armorSet.charm.amount1, req.body.armorSet.charm.amount2)
     .then(result1 =>

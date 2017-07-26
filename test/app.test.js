@@ -33,8 +33,8 @@ describe("app route", () => {
               id: 1
             },
             style: "Guild",
-            min: 11,
-            sec: 12
+            minutes: 11,
+            seconds: 12
           },
           armorSet: {
             setName: 'tt',

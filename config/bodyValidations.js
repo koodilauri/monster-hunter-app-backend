@@ -39,19 +39,18 @@ exports.validations = {
               pattern: /^([a-zA-Z0-9']+(-| )?)*$/i,
               maxLength: 7
             },
-            min: {
+            minutes: {
               type: 'number',
               gte: 0,
               lte: 49
             },
-            sec: {
+            seconds: {
               type: 'number',
               gte: 0,
               lte: 59
             }
           }
-        },
-        armorSet: { type: "object" },
+        }
       }
     }
   }
