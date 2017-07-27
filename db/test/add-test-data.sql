@@ -12,12 +12,6 @@ INSERT INTO weapon (name, class, type) VALUES('Tempest Nightbow', 'Bow', 'Gunner
 INSERT INTO weapon (name, class, type) VALUES('Cuddly Cat', 'Charge Blade', 'Blade Master');	INSERT INTO weapon (name, class, type) VALUES('Felyne Fancy', 'Charge Blade', 'Blade Master');
 INSERT INTO weapon (name, class, type) VALUES('Daora''s Casca', 'Charge Blade', 'Blade Master');	INSERT INTO weapon (name, class, type) VALUES('Daora''s Thwartoise', 'Charge Blade', 'Blade Master');
 
-
-INSERT INTO skill (name) VALUES('Ammo Saver');
-INSERT INTO skill (name) VALUES('Anti-Theft');
-INSERT INTO skill (name) VALUES('Yukumo');
-INSERT INTO skill (name) VALUES('---');
-
 INSERT INTO decoration (name, size, skill1id, bonus1, skill2id, bonus2) VALUES('Springs Jwl 1', 1, 3,2,4, 0);
 INSERT INTO decoration (name, size, skill1id, bonus1, skill2id, bonus2) VALUES('Thrift Jwl 1', 1, 1,1,2, -1);
 INSERT INTO decoration (name, size, skill1id, bonus1, skill2id, bonus2) VALUES('Thrift Jwl 2', 2, 1,3,2, -1);

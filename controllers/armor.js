@@ -1,8 +1,8 @@
 const Armor = require("../models/Armor")
 const handleErrors = require("../middlewares/errorHandler")
 
-exports.getArmorData = (req, res, next) => {
-  Armor.getArmorList()
+exports.getArmors = (req, res, next) => {
+  Armor.findAll()
     .then((result) => { res.json({ armor: result.rows }) })
     .catch((err) => next(err))
 }

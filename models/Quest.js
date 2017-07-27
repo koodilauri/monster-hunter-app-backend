@@ -1,7 +1,7 @@
 const query = require("../db/connect").query
 
 const Quest = {
-  getQuestList() {
+  findAll() {
     return query(`SELECT quest.questgiver, goal, stars, quest.name, monster1, type1, monster2, type2, monster3, type3, monster4, type4, monster5, type5, quest.id, count(questid) FROM submission
     FULL OUTER JOIN (SELECT a.*
      , (SELECT b1.monster FROM monsterInQuest b1
