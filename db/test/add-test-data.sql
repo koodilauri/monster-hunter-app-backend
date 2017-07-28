@@ -44,5 +44,5 @@ INSERT INTO hunter_art (name, gaugesize, description, weapon) VALUES('Triple Vol
 INSERT INTO hunter_art (name, gaugesize, description, weapon) VALUES('Triple Volley II', 670, 'In Tier II, the final shot takes longer to fire, yet is stronger than in Tier I.', 'Bow');
 INSERT INTO hunter_art (name, gaugesize, description, weapon) VALUES('Triple Volley III', 750, 'In Tier III, the final shot takes longer to fire, yet is stronger than in Tier II.', 'Bow');
 
-INSERT INTO submission (name, questId, questtime, weaponId, style, created, setid) VALUES ('lauri', 1, '00:05:31', 1, 'adept', '2017-06-12',1);
-INSERT INTO submission (name, questId, questtime, weaponId, style, created, setid) VALUES ('bob', 2, '00:06:02', 1, 'striker', '2017-06-13',1);
+INSERT INTO submission (name, questId, questtime, weaponId, style, created, setid) VALUES ('lauri', 1, '00:05:31', 1, 'Adept', '2017-06-12',1);
+INSERT INTO submission (name, questId, questtime, weaponId, style, created, setid) VALUES ('bob', 2, '00:06:02', 1, 'Striker', '2017-06-13',1);

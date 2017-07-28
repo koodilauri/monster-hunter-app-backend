@@ -36,8 +36,7 @@ exports.validations = {
             },
             style: {
               type: "string",
-              pattern: /^([a-zA-Z0-9']+(-| )?)*$/i,
-              maxLength: 7
+              pattern: /^(Guild|Striker|Adept|Aerial)$/
             },
             minutes: {
               type: 'number',
