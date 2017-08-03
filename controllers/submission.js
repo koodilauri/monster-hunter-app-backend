@@ -29,26 +29,26 @@ exports.postSubmission = (req, res, next) => {
     bonus2: 0
   }
   const dummyArmorSet = {
-    head: 1,
-    torso: 2,
-    arms: 3,
-    waist: 4,
-    feet: 5
+    selectedHead: 1,
+    selectedTorso: 2,
+    selectedArms: 3,
+    selectedWaist: 4,
+    selectedFeet: 5
   }
   if (req.body.armorSet) {
-    if (req.body.armorSet.head.name === "") req.body.armorSet.head.id = 1
-    if (req.body.armorSet.torso.name === "") req.body.armorSet.torso.id = 2
-    if (req.body.armorSet.arms.name === "") req.body.armorSet.arms.id = 3
-    if (req.body.armorSet.waist.name === "") req.body.armorSet.waist.id = 4
-    if (req.body.armorSet.feet.name === "") req.body.armorSet.feet.id = 5
+    if (req.body.armorSet.selectedHead.equipment.name === "") req.body.armorSet.selectedHead.equipment.id = 1
+    if (req.body.armorSet.selectedTorso.equipment.name === "") req.body.armorSet.selectedTorso.equipment.id = 2
+    if (req.body.armorSet.selectedArms.equipment.name === "") req.body.armorSet.selectedArms.equipment.id = 3
+    if (req.body.armorSet.selectedWaist.equipment.name === "") req.body.armorSet.selectedWaist.equipment.id = 4
+    if (req.body.armorSet.selectedFeet.equipment.name === "") req.body.armorSet.selectedFeet.equipment.id = 5
   }
   const time = new Date()
-  Charm.saveOrUpdateOne(req.body.armorSet.charm.slots, req.body.armorSet.charm.skill1.id, req.body.armorSet.charm.skill2.id, req.body.armorSet.charm.amount1, req.body.armorSet.charm.amount2)
+  Charm.saveOrUpdateOne(req.body.armorSet.selectedCharm.equipment.slots, req.body.armorSet.selectedCharm.equipment.skill1, req.body.armorSet.selectedCharm.equipment.skill2, req.body.armorSet.selectedCharm.equipment.amount1, req.body.armorSet.selectedCharm.equipment.amount2)
     .then(result1 =>
-      ArmorSet.saveOrUpdateOne(req.body.armorSet.head.id, req.body.armorSet.torso.id, req.body.armorSet.arms.id, req.body.armorSet.waist.id, req.body.armorSet.feet.id, result1.rows[0].id)
+      ArmorSet.saveOrUpdateOne(req.body.armorSet.selectedHead.equipment.id, req.body.armorSet.selectedTorso.equipment.id, req.body.armorSet.selectedArms.equipment.id, req.body.armorSet.selectedWaist.equipment.id, req.body.armorSet.selectedFeet.equipment.id, result1.rows[0].id)
     )
     .then(result2 =>
-      Submission.saveOrUpdateOne(req.body.newSubmission.name, req.body.newSubmission.quest.id, questTime, req.body.newSubmission.weapon.id, req.body.newSubmission.style, time, result2.rows[0].id)
+      Submission.saveOrUpdateOne(req.body.newSubmission.name, req.body.newSubmission.quest.id, questTime, req.body.armorSet.selectedWeapon.equipment.id, req.body.styleAndArts.selectedStyle, time, result2.rows[0].id)
     )
     .then((result3) => {
       res.send({
@@ -56,7 +56,7 @@ exports.postSubmission = (req, res, next) => {
           name: result3.rows[0].name,
           questname: req.body.newSubmission.quest.name,
           questtime: result3.rows[0].questtime,
-          weaponname: req.body.newSubmission.weapon.name,
+          weaponname: req.body.armorSet.selectedWeapon.equipment.name,
           style: result3.rows[0].style,
           created: result3.rows[0].created,
           setid: result3.rows[0].setid
