@@ -29,31 +29,35 @@ describe("app route", () => {
               id: 1
             },
             weapon: {
-              name: "Hammer",
-              id: 1
+              name: "Lance",
+              id: 2
             },
-            style: "Guild",
+            style: "Striker",
             minutes: 11,
             seconds: 12
           },
           armorSet: {
             setName: 'tt',
-            head: { name: 'headarmor', id: 1 },
-            torso: { name: 'torsoarmor', id: 2 },
-            arms: { name: 'armsarmor', id: 3 },
-            waist: { name: 'waistarmor', id: 4 },
-            feet: { name: 'feetarmor', id: 5 },
-            charm: {
-              slots: '2',
-              skill1: {
-                id: 1
-              },
-              amount1: '-4',
-              skill2: {
-                id: 2
-              },
-              amount2: '13'
+            selectedWeapon: { equipment: { name: "Hammer", id: 1 } },
+            selectedHead: { equipment: { name: 'headarmor', id: 1 } },
+            selectedTorso: { equipment: { name: 'torsoarmor', id: 2 } },
+            selectedArms: { equipment: { name: 'armsarmor', id: 3 } },
+            selectedWaist: { equipment: { name: 'waistarmor', id: 4 } },
+            selectedFeet: { equipment: { name: 'feetarmor', id: 5 } },
+            selectedCharm: {
+              equipment: {
+                slots: '2',
+                skill1: 1
+                ,
+                amount1: '-4',
+                skill2: 2
+                ,
+                amount2: '13'
+              }
             }
+          },
+          styleAndArts: {
+            selectedStyle: "Guild"
           }
         })
         .set("Accept", "application/json")
