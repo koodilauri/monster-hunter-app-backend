@@ -24,32 +24,40 @@ describe("app route", () => {
         .send({
           newSubmission: {
             name: "lauri",
-            questName: "Harvest Tour: Jurassic Frontier",
-            questId: 1,
-            weapon: "Hammer",
-            weaponId: 1,
-            style: "Guild",
-            min: 11,
-            sec: 12
+            quest: {
+              name: "Harvest Tour: Jurassic Frontier",
+              id: 1
+            },
+            weapon: {
+              name: "Lance",
+              id: 2
+            },
+            style: "Striker",
+            minutes: 11,
+            seconds: 12
           },
           armorSet: {
             setName: 'tt',
-            head: { name: 'headarmor', id: 1 },
-            torso: { name: 'torsoarmor', id: 2 },
-            arms: { name: 'armsarmor', id: 3 },
-            waist: { name: 'waistarmor', id: 4 },
-            feet: { name: 'feetarmor', id: 5 },
-            charm: {
-              slots: '2',
-              skill1: {
-                id: 1
-              },
-              amount1: '-4',
-              skill2: {
-                id: 2
-              },
-              amount2: '13'
+            selectedWeapon: { equipment: { name: "Hammer", id: 1 } },
+            selectedHead: { equipment: { name: 'headarmor', id: 1 } },
+            selectedTorso: { equipment: { name: 'torsoarmor', id: 2 } },
+            selectedArms: { equipment: { name: 'armsarmor', id: 3 } },
+            selectedWaist: { equipment: { name: 'waistarmor', id: 4 } },
+            selectedFeet: { equipment: { name: 'feetarmor', id: 5 } },
+            selectedCharm: {
+              equipment: {
+                slots: '2',
+                skill1: 1
+                ,
+                amount1: '-4',
+                skill2: 2
+                ,
+                amount2: '13'
+              }
             }
+          },
+          styleAndArts: {
+            selectedStyle: "Guild"
           }
         })
         .set("Accept", "application/json")
@@ -66,13 +74,13 @@ describe("app route", () => {
     })
   })
   describe("GET /quest", () => {
-    it("should return all 6 quests", (done) => {
+    it("should return all 8 quests", (done) => {
       request(app)
         .get("/quest")
         .set("Accept", "application/json")
         .expect("Content-Type", /json/)
         .expect((res) => {
-          expect(res.body.items.length).to.equal(6)
+          expect(res.body.items.length).to.equal(8)
         })
         .expect(200, done)
     })

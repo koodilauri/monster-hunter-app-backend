@@ -10,42 +10,46 @@ exports.validations = {
               type: "string",
               pattern: /^([a-zA-Z0-9':!?]+(-| )?)*$/i
             },
-            questName: {
-              type: "string",
-              pattern: /^([a-zA-Z0-9':!?]+(-| )?)*$/i
-            },
-            questId: {
-              type: 'number'
+            quest: {
+              name: {
+                type: "string",
+                pattern: /^([a-zA-Z0-9':!?]+(-| )?)*$/i
+              },
+              id: {
+                type: 'number',
+                gt: 0
+              }
             },
             questTime: {
               type: 'any',
               optional: true
             },
             weapon: {
-              type: "string",
-              pattern: /^([a-zA-Z0-9':&"!?,.]+(-| )?)*$/i
-            },
-            weaponId: {
-              type: 'number'
+              name: {
+                type: "string",
+                pattern: /^([a-zA-Z0-9':&"!?,.]+(-| )?)*$/i
+              },
+              id: {
+                type: 'number',
+                gt: 0
+              }
             },
             style: {
               type: "string",
-              pattern: /^([a-zA-Z0-9']+(-| )?)*$/i,
-              maxLength: 7
+              pattern: /^(Guild|Striker|Adept|Aerial)$/
             },
-            min: {
+            minutes: {
               type: 'number',
               gte: 0,
               lte: 49
             },
-            sec: {
+            seconds: {
               type: 'number',
               gte: 0,
               lte: 59
             }
           }
-        },
-        armorSet: { type: "object" }
+        }
       }
     }
   }

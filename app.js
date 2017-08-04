@@ -11,6 +11,7 @@ const hunterArtCtrl = require("./controllers/hunterArt")
 const questCtrl = require("./controllers/quest")
 const skillCtrl = require("./controllers/skill")
 const weaponCtrl = require("./controllers/weapon")
+const armorSetCtrl = require("./controllers/armorSet")
 const validate = require("./middlewares/validateBody")
 const errorHandler = require("./middlewares/errorHandler")
 
@@ -38,17 +39,19 @@ app.get("/submission", submissionCtrl.getSubmission)
 
 app.post("/submission", validate.validateBody("submission", "post"), submissionCtrl.postSubmission)
 
-app.get("/quest", questCtrl.getQuestData)
+app.get("/quest", questCtrl.getQuests)
 
-app.get("/armor", armorCtrl.getArmorData)
+app.get("/armor", armorCtrl.getArmors)
 
-app.get("/weapon", weaponCtrl.getWeaponData)
+app.get("/weapon", weaponCtrl.getWeapons)
 
-app.get("/hunter-art", hunterArtCtrl.getHunterArtData)
+app.get("/hunter-art", hunterArtCtrl.getHunterArts)
 
-app.get("/skill", skillCtrl.getSkillData)
+app.get("/skill", skillCtrl.getSkills)
 
-app.get("/decoration", decorationCtrl.getDecorationData)
+app.get("/decoration", decorationCtrl.getDecorations)
+
+app.get("/armorset", armorSetCtrl.getArmorSets)
 
 app.use(errorHandler.handleErrors)
 

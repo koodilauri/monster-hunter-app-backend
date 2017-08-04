@@ -1,7 +1,7 @@
 const query = require("../db/connect").query
 
 const Armor = {
-  getArmorList() {
+  findAll() {
     return query(`SELECT A.*, S1.name AS skill1name, S2.name AS skill2name, S3.name AS skill3name FROM armor A
     LEFT JOIN skill S1
     ON S1.id = A.skill1

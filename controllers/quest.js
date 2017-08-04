@@ -1,8 +1,8 @@
 const Quest = require("../models/Quest")
 const handleErrors = require("../middlewares/errorHandler")
 
-exports.getQuestData = (req, res, next) => {
-  Quest.getQuestList()
+exports.getQuests = (req, res, next) => {
+  Quest.findAll()
     .then((result) => { res.json({ items: result.rows }) })
     .catch((err) => next(err))
 }
