@@ -37,7 +37,8 @@ describe("app route", () => {
             seconds: 12
           },
           armorSet: {
-            setName: 'tt',
+            setName: "tt",
+            armorType: "Blademaster",
             selectedWeapon: { equipment: { name: "Hammer", id: 1 } },
             selectedHead: { equipment: { name: 'headarmor', id: 1 } },
             selectedTorso: { equipment: { name: 'torsoarmor', id: 2 } },
