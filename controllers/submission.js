@@ -23,7 +23,7 @@ exports.postSubmission = (req, res, next) => {
   }
   let arts = [1, 1, 1]
   req.body.styleAndArts.selectedHunterArts.map((art, id) => {
-    arts[id] = art.id
+    if (art.id > 0) arts[id] = art.id
   })
   let decorations = { decos: [], amount: [] }
   Object.keys(req.body.armorSet).map(part => {
@@ -65,9 +65,23 @@ exports.postSubmission = (req, res, next) => {
     if (req.body.armorSet.selectedFeet.equipment.name === "") req.body.armorSet.selectedFeet.equipment.id = 5
   }
   const time = new Date()
-  Charm.saveOrUpdateOne(req.body.armorSet.selectedCharm.equipment.slots, req.body.armorSet.selectedCharm.equipment.skill1, req.body.armorSet.selectedCharm.equipment.skill2, req.body.armorSet.selectedCharm.equipment.amount1, req.body.armorSet.selectedCharm.equipment.amount2)
+  Charm.saveOrUpdateOne(
+    req.body.armorSet.selectedCharm.equipment.slots, 
+    req.body.armorSet.selectedCharm.equipment.skill1, 
+    req.body.armorSet.selectedCharm.equipment.skill2, 
+    req.body.armorSet.selectedCharm.equipment.amount1, 
+    req.body.armorSet.selectedCharm.equipment.amount2)
     .then(result1 =>
-      ArmorSet.saveOrUpdateOne(req.body.armorSet.setName, req.body.styleAndArts.selectedStyle, req.body.armorSet.selectedWeapon.equipment.id, req.body.armorSet.selectedHead.equipment.id, req.body.armorSet.selectedTorso.equipment.id, req.body.armorSet.selectedArms.equipment.id, req.body.armorSet.selectedWaist.equipment.id, req.body.armorSet.selectedFeet.equipment.id, result1.rows[0].id)
+      ArmorSet.saveOrUpdateOne(
+        req.body.armorSet.setName, 
+        req.body.styleAndArts.selectedStyle, 
+        req.body.armorSet.selectedWeapon.equipment.id, 
+        req.body.armorSet.selectedHead.equipment.id, 
+        req.body.armorSet.selectedTorso.equipment.id, 
+        req.body.armorSet.selectedArms.equipment.id, 
+        req.body.armorSet.selectedWaist.equipment.id, 
+        req.body.armorSet.selectedFeet.equipment.id, 
+        result1.rows[0].id)
     )
     .then(result2 => {
       if (decorations.decos.length > 0)
@@ -82,10 +96,14 @@ exports.postSubmission = (req, res, next) => {
     .then((result4) => {
       res.send({
         newSubmission: {
+          id: result4.rows.id,
           name: result4.rows[0].name,
           questname: req.body.newSubmission.quest.name,
           questtime: result4.rows[0].questtime,
           weaponname: req.body.armorSet.selectedWeapon.equipment.name,
+          weaponclass:req.body.armorSet.selectedWeapon.equipment.class,
+          setname:req.body.armorSet.setName,
+          type:req.body.armorSet.armorType,
           style: req.body.styleAndArts.selectedStyle,
           created: result4.rows[0].created,
           setid: result4.rows[0].setid

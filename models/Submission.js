@@ -13,7 +13,7 @@ const Submission = {
   saveOrUpdateOne(name, questid, questtime, created, setID) {
     // const string = "INSERT INTO submission (name, quest, questtime, weapon, style, created) VALUES ('"+name+"', '"+quest+"', '"+questtime+"', '"+weapon+"', '"+style+"', '"+created+"')";
     return query(`INSERT INTO submission (name, questid, questtime, created, setID) VALUES ($1, $2, $3, $4, $5)
-    RETURNING name, questtime, setID, created`, [name, questid, questtime, created, setID])
+    RETURNING id, name, questtime, setID, created`, [name, questid, questtime, created, setID])
   }
 }
 
