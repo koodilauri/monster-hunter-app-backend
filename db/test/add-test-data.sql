@@ -33,7 +33,7 @@ INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, 
 INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Hunting Leggings', 2, 'Feet', 'Gunner', 34, 2, 0, 0, 0, 0, 1, 2, 3, 4, 0, 4, 0);
 
 INSERT INTO charm (slots, skill1id, skill2id, bonus1, bonus2) VALUES(1,1,2,3,4);
-INSERT INTO armorset (name, style, weapon_id head_id, torso_id, arms_id, waist_id, feet_id, charm_id) VALUES('testSet', 'Guild', 1,1,2,3,4,5,1);
+INSERT INTO armorset (name, style, weapon_id, head_id, torso_id, arms_id, waist_id, feet_id, charm_id) VALUES('testSet', 'Guild', 1,1,2,3,4,5,1);
 
 INSERT INTO hunter_art (name, gaugesize, description, weapon) VALUES('Absolute Evasion', 250, 'Perform a corkscrew-like evasion, providing a window of opportunity to make an emergency escape. Sports a lengthy period of invulnerability and sheathes your weapon automatically upon use.', 'General');
 INSERT INTO hunter_art (name, gaugesize, description, weapon) VALUES('Hunter''s Oasis', 1330, 'Places a special device on the ground that emits a Health-restoring mist. It will continue to restore your Health as long as you are within range.', 'General');
