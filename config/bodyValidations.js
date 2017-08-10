@@ -62,7 +62,7 @@ exports.validations = {
             },
             setName: {
               type: "string",
-              pattern: /^[a-zA-Z]+$/,
+              pattern: /^[a-z A-Z0-9']+$/,
               required: true
             },
             selectedWeapon: {

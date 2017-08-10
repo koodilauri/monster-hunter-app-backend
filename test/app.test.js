@@ -58,7 +58,8 @@ describe("app route", () => {
             }
           },
           styleAndArts: {
-            selectedStyle: "Guild"
+            selectedStyle: "Guild",
+            selectedHunterArts: []
           }
         })
         .set("Accept", "application/json")

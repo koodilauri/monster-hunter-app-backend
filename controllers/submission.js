@@ -21,6 +21,28 @@ exports.postSubmission = (req, res, next) => {
   } else {
     questTime = questTime + "0" + req.body.newSubmission.seconds
   }
+  let arts = [1, 1, 1]
+  req.body.styleAndArts.selectedHunterArts.map((art, id) => {
+    arts[id] = art.id
+  })
+  let decorations = { decos: [], amount: [] }
+  Object.keys(req.body.armorSet).map(part => {
+    if (req.body.armorSet[part].decorations) {
+      req.body.armorSet[part].decorations.map(deco => {
+        const index = decorations.decos.indexOf(deco.id)
+        if (index === -1) {
+          if (deco.id > 0) {
+            decorations.decos = decorations.decos.concat(deco.id)
+            decorations.amount = decorations.amount.concat(1)
+          }
+        }
+        else {
+          decorations.amount[index]++
+        }
+      })
+    }
+  })
+  console.log("all the decos ", decorations.decos, decorations.amount)
   const dummyCharm = {
     slots: 0,
     skill1: 149,
@@ -45,21 +67,28 @@ exports.postSubmission = (req, res, next) => {
   const time = new Date()
   Charm.saveOrUpdateOne(req.body.armorSet.selectedCharm.equipment.slots, req.body.armorSet.selectedCharm.equipment.skill1, req.body.armorSet.selectedCharm.equipment.skill2, req.body.armorSet.selectedCharm.equipment.amount1, req.body.armorSet.selectedCharm.equipment.amount2)
     .then(result1 =>
-      ArmorSet.saveOrUpdateOne(req.body.armorSet.selectedHead.equipment.id, req.body.armorSet.selectedTorso.equipment.id, req.body.armorSet.selectedArms.equipment.id, req.body.armorSet.selectedWaist.equipment.id, req.body.armorSet.selectedFeet.equipment.id, result1.rows[0].id)
+      ArmorSet.saveOrUpdateOne(req.body.armorSet.setName, req.body.styleAndArts.selectedStyle, req.body.armorSet.selectedWeapon.equipment.id, req.body.armorSet.selectedHead.equipment.id, req.body.armorSet.selectedTorso.equipment.id, req.body.armorSet.selectedArms.equipment.id, req.body.armorSet.selectedWaist.equipment.id, req.body.armorSet.selectedFeet.equipment.id, result1.rows[0].id)
     )
-    .then(result2 =>
-      Submission.saveOrUpdateOne(req.body.newSubmission.name, req.body.newSubmission.quest.id, questTime, req.body.armorSet.selectedWeapon.equipment.id, req.body.styleAndArts.selectedStyle, time, result2.rows[0].id)
+    .then(result2 => {
+      if (decorations.decos.length > 0)
+        decorations.decos.map((deco, id) => {
+          ArmorSet.saveDecoration(deco, result2.rows[0].id, decorations.amount[id])
+        })
+      return ArmorSet.saveArt(arts[0], arts[1], arts[2], result2.rows[0].id)
+    })
+    .then(result3 =>
+      Submission.saveOrUpdateOne(req.body.newSubmission.name, req.body.newSubmission.quest.id, questTime, time, result3.rows[0].set_id)
     )
-    .then((result3) => {
+    .then((result4) => {
       res.send({
         newSubmission: {
-          name: result3.rows[0].name,
+          name: result4.rows[0].name,
           questname: req.body.newSubmission.quest.name,
-          questtime: result3.rows[0].questtime,
+          questtime: result4.rows[0].questtime,
           weaponname: req.body.armorSet.selectedWeapon.equipment.name,
-          style: result3.rows[0].style,
-          created: result3.rows[0].created,
-          setid: result3.rows[0].setid
+          style: req.body.styleAndArts.selectedStyle,
+          created: result4.rows[0].created,
+          setid: result4.rows[0].setid
         }
       })
     })

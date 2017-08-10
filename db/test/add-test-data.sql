@@ -16,11 +16,11 @@ INSERT INTO decoration (name, size, skill1id, bonus1, skill2id, bonus2) VALUES('
 INSERT INTO decoration (name, size, skill1id, bonus1, skill2id, bonus2) VALUES('Thrift Jwl 1', 1, 1,1,2, -1);
 INSERT INTO decoration (name, size, skill1id, bonus1, skill2id, bonus2) VALUES('Thrift Jwl 2', 2, 1,3,2, -1);
 
-INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Leather Headgear', 1, 'Head', 'Both', 34, 0, 0, 0, 0, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Leather Vest', 0, 'Torso', 'Both', 34, 0, 0, 0, 0, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Leather Gloves', 1, 'Arms', 'Both', 34, 0, 0, 0, 0, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Leather Belt', 2, 'Waist', 'Both', 34, 0, 0, 0, 0, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Leather Trousers', 1, 'Feet', 'Both', 34, 0, 0, 0, 0, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Leather Headgear', 1, 'Head', 'Both', 34, 0, 0, 0, 0, 0, 1, 4, 0, 4, 0, 4, 0);
+INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Leather Vest', 0, 'Torso', 'Both', 34, 0, 0, 0, 0, 0, 1, 4, 0, 4, 0, 4, 0);
+INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Leather Gloves', 1, 'Arms', 'Both', 34, 0, 0, 0, 0, 0, 1, 4, 0, 4, 0, 4, 0);
+INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Leather Belt', 2, 'Waist', 'Both', 34, 0, 0, 0, 0, 0, 1, 4, 0, 4, 0, 4, 0);
+INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Leather Trousers', 1, 'Feet', 'Both', 34, 0, 0, 0, 0, 0, 1, 4, 0, 4, 0, 4, 0);
 INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Hunting Helm', 1, 'Head', 'Blademaster', 68, 1, 0, 0, 0, 0, 1, 1, 3, 4, 0, 4, 0);
 INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Hunting Mail', 0, 'Torso', 'Blademaster', 68, 1, 0, 0, 0, 0, 1, 1, 2, 4, 0, 4, 0);
 INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Hunting Braces', 0, 'Arms', 'Blademaster', 68, 1, 0, 0, 0, 0, 1, 1, 5, 4, 0, 4, 0);
@@ -33,7 +33,7 @@ INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, 
 INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Hunting Leggings', 2, 'Feet', 'Gunner', 34, 2, 0, 0, 0, 0, 1, 2, 3, 4, 0, 4, 0);
 
 INSERT INTO charm (slots, skill1id, skill2id, bonus1, bonus2) VALUES(1,1,2,3,4);
-INSERT INTO armorset (name, head_id, torso_id, arms_id, waist_id, feet_id, charm_id) VALUES('testSet',1,2,3,4,5,1);
+INSERT INTO armorset (name, style, weapon_id head_id, torso_id, arms_id, waist_id, feet_id, charm_id) VALUES('testSet', 'Guild', 1,1,2,3,4,5,1);
 
 INSERT INTO hunter_art (name, gaugesize, description, weapon) VALUES('Absolute Evasion', 250, 'Perform a corkscrew-like evasion, providing a window of opportunity to make an emergency escape. Sports a lengthy period of invulnerability and sheathes your weapon automatically upon use.', 'General');
 INSERT INTO hunter_art (name, gaugesize, description, weapon) VALUES('Hunter''s Oasis', 1330, 'Places a special device on the ground that emits a Health-restoring mist. It will continue to restore your Health as long as you are within range.', 'General');
@@ -44,5 +44,5 @@ INSERT INTO hunter_art (name, gaugesize, description, weapon) VALUES('Triple Vol
 INSERT INTO hunter_art (name, gaugesize, description, weapon) VALUES('Triple Volley II', 670, 'In Tier II, the final shot takes longer to fire, yet is stronger than in Tier I.', 'Bow');
 INSERT INTO hunter_art (name, gaugesize, description, weapon) VALUES('Triple Volley III', 750, 'In Tier III, the final shot takes longer to fire, yet is stronger than in Tier II.', 'Bow');
 
-INSERT INTO submission (name, questId, questtime, weaponId, style, created, setid) VALUES ('lauri', 1, '00:05:31', 1, 'Adept', '2017-06-12',1);
-INSERT INTO submission (name, questId, questtime, weaponId, style, created, setid) VALUES ('bob', 2, '00:06:02', 1, 'Striker', '2017-06-13',1);
+INSERT INTO submission (name, questId, questtime, created, setid) VALUES ('lauri', 1, '00:05:31', '2017-06-12',1);
+INSERT INTO submission (name, questId, questtime, created, setid) VALUES ('bob', 2, '00:06:02', '2017-06-13',1);

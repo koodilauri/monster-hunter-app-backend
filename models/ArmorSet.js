@@ -20,10 +20,20 @@ const ArmorSet = {
     JOIN skill H
     ON F.skill2id = H.id`)
   },
-  saveOrUpdateOne(head_id, torso_id, arms_id, waist_id, feet_id, charm_id) {
-    return query(`INSERT INTO armorset (head_id, torso_id, arms_id, waist_id, feet_id, charm_id) VALUES ($1, $2, $3, $4, $5, $6)
-    ON CONFLICT (head_id, torso_id, arms_id, waist_id, feet_id, charm_id) DO UPDATE SET head_id=EXCLUDED.head_id
-    RETURNING id`, [head_id, torso_id, arms_id, waist_id, feet_id, charm_id])
+  saveOrUpdateOne(name, style, weapon_id, head_id, torso_id, arms_id, waist_id, feet_id, charm_id) {
+    return query(`INSERT INTO armorset (name, style, weapon_id, head_id, torso_id, arms_id, waist_id, feet_id, charm_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    RETURNING id`, [name, style, weapon_id, head_id, torso_id, arms_id, waist_id, feet_id, charm_id])
+  },
+  // ON CONFLICT (head_id, torso_id, arms_id, waist_id, feet_id, charm_id) DO UPDATE SET head_id=EXCLUDED.head_id
+
+  saveDecoration(decoration_id, set_id, amount) {
+    return query(`INSERT INTO decoration_in_set (decoration_id, set_id, amount) VALUES ($1, $2, $3)`,
+      [decoration_id, set_id, amount])
+  },
+  saveArt(art1_id, art2_id, art3_id, set_id) {
+    return query(`INSERT INTO art_in_set (art1_id, art2_id, art3_id, set_id) VALUES ($1, $2, $3, $4)
+    RETURNING set_id`,
+      [art1_id, art2_id, art3_id, set_id])
   }
 }
 
