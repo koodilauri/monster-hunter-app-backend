@@ -1,4 +1,4 @@
-CREATE TABLE armorset (
+CREATE TABLE armor_set (
   id  SERIAL PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
   style VARCHAR(30) NOT NULL,
@@ -12,20 +12,19 @@ CREATE TABLE armorset (
 );
 
 CREATE TABLE decoration_in_set(
-  id  SERIAL PRIMARY KEY,
   decoration_id INT REFERENCES decoration(id) NOT NULL,
-  set_id INT REFERENCES armorset(id) NOT NULL,
-  amount SMALLINT NOT NULL
+  set_id INT REFERENCES armor_set(id) NOT NULL,
+  amount SMALLINT NOT NULL,
+  PRIMARY KEY (decoration_id, set_id)
 );
 
 CREATE TABLE art_in_set(
-  id  SERIAL PRIMARY KEY,
-  set_id INT REFERENCES armorset(id) NOT NULL,
+  set_id INT REFERENCES armor_set(id) NOT NULL PRIMARY KEY,
   art1_id INT REFERENCES hunter_art(id) NOT NULL,
   art2_id INT REFERENCES hunter_art(id) NOT NULL,
   art3_id INT REFERENCES hunter_art(id) NOT NULL
 );
 
--- ALTER TABLE armorset ADD CONSTRAINT unique_set UNIQUE (head_id, torso_id, arms_id, waist_id, feet_id, charm_id);
-GRANT ALL PRIVILEGES ON TABLE armorset, decoration_in_set, art_in_set TO mh_db_user;
-GRANT USAGE, SELECT ON SEQUENCE armorset_id_seq, art_in_set_id_seq, decoration_in_set_id_seq TO mh_db_user;
+-- ALTER TABLE armor_set ADD CONSTRAINT unique_set UNIQUE (head_id, torso_id, arms_id, waist_id, feet_id, charm_id);
+GRANT ALL PRIVILEGES ON TABLE armor_set, decoration_in_set, art_in_set TO mh_db_user;
+GRANT USAGE, SELECT ON SEQUENCE armor_set_id_seq TO mh_db_user;
