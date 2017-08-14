@@ -36,7 +36,7 @@ const parseDecorations = armorSet => {
       armorSet[part].decorations.map(deco => {
         const index = parsedDecorations.decos.indexOf(deco.id)//check if decoration is already in parsedDecorations
         if (index === -1) {
-          if (deco.id > 0) {
+          if (deco.id > 1) {
             parsedDecorations.decos = parsedDecorations.decos.concat(deco.id)
             parsedDecorations.amount = parsedDecorations.amount.concat(1)
           }

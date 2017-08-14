@@ -23,24 +23,6 @@ exports.validations = {
                 }
               }
             },
-            questTime: {
-              type: 'any',
-              optional: true
-            },
-            weapon: {
-              name: {
-                type: "string",
-                pattern: /^([a-zA-Z0-9':&"!?,.]+(-| )?)*$/i
-              },
-              id: {
-                type: 'number',
-                gt: 0
-              }
-            },
-            style: {
-              type: "string",
-              pattern: /^(Guild|Striker|Adept|Aerial)$/
-            },
             minutes: {
               type: 'number',
               gte: 0,
@@ -157,6 +139,28 @@ exports.validations = {
                 }
               }
             }
+          }
+        },
+        styleAndArts: {
+          type: "object",
+          properties: {
+            selectedStyle: {
+              type: "string",
+              pattern: /^(Guild|Striker|Adept|Aerial)$/,
+            },
+            selectedHunterArts: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  id: {
+                    type: "number"
+                  }
+                }
+              },
+              minLength: 1,
+              maxLength: 3,
+            },
           }
         }
       }

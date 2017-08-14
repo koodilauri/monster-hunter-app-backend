@@ -28,11 +28,6 @@ describe("app route", () => {
               name: "Harvest Tour: Jurassic Frontier",
               id: 1
             },
-            weapon: {
-              name: "Lance",
-              id: 2
-            },
-            style: "Striker",
             minutes: 11,
             seconds: 12
           },
