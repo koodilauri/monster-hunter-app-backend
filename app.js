@@ -10,6 +10,7 @@ const decorationCtrl = require("./controllers/decoration")
 const hunterArtCtrl = require("./controllers/hunterArt")
 const questCtrl = require("./controllers/quest")
 const skillCtrl = require("./controllers/skill")
+const charmCtrl = require("./controllers/charm")
 const weaponCtrl = require("./controllers/weapon")
 const armorSetCtrl = require("./controllers/armorSet")
 const validate = require("./middlewares/validateBody")
@@ -52,6 +53,8 @@ app.get("/skill", skillCtrl.getSkills)
 app.get("/decoration", decorationCtrl.getDecorations)
 
 app.get("/armorset", armorSetCtrl.getArmorSets)
+
+app.get("/charm", charmCtrl.getCharms)
 
 app.use(errorHandler.handleErrors)
 
