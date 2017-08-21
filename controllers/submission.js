@@ -30,21 +30,32 @@ const parseArts = arts => {
 }
 
 const parseDecorations = armorSet => {
-  let parsedDecorations = { decos: [], amount: [] }
+  let parsedDecorations = { decos: [], part: [] }
   Object.keys(armorSet).map(part => {
     if (armorSet[part].decorations) {
-      armorSet[part].decorations.map(deco => {
-        const index = parsedDecorations.decos.indexOf(deco.id)//check if decoration is already in parsedDecorations
-        if (index === -1) {
-          if (deco.id > 1) {
-            parsedDecorations.decos = parsedDecorations.decos.concat(deco.id)
-            parsedDecorations.amount = parsedDecorations.amount.concat(1)
-          }
+      if (armorSet[part].decorations[0] !== undefined) {
+        const decorations = {
+          decoration1: armorSet[part].decorations[0] || { id: 1 },
+          decoration2: armorSet[part].decorations[1] || { id: 1 },
+          decoration3: armorSet[part].decorations[2] || { id: 1 }
         }
-        else {
-          parsedDecorations.amount[index]++//if a decoration is already in the list, increment its amount by 1
-        }
-      })
+        parsedDecorations.decos = parsedDecorations.decos.concat(decorations)
+        parsedDecorations.part = parsedDecorations.part.concat(part)
+      }
+
+      // armorSet[part].decorations.map(deco => {
+      //   const index = parsedDecorations.decos.indexOf(deco.id)//check if decoration is already in parsedDecorations
+      //   if (index === -1) {
+      //     if (deco.id > 1) {
+      //       parsedDecorations.decos = parsedDecorations.decos.concat(deco.id)
+      //       parsedDecorations.amount = parsedDecorations.amount.concat(1)
+      //     }
+      //   }
+      //   else {
+      //     parsedDecorations.amount[index]++//if a decoration is already in the list, increment its amount by 1
+      //   }
+      // })
+
     }
   })
   return parsedDecorations
@@ -54,7 +65,7 @@ exports.postSubmission = (req, res, next) => {
   const questTime = parseTime(req.body.newSubmission.minutes, req.body.newSubmission.seconds)
   const arts = parseArts(req.body.styleAndArts.selectedHunterArts)
   const decorations = parseDecorations(req.body.armorSet)
-  console.log("all the decos ", decorations.decos, decorations.amount)
+  console.log("all the decos ", decorations.decos, decorations.part)
   // const dummyCharm = {
   //   slots: 0,
   //   skill1: 149,
@@ -94,24 +105,24 @@ exports.postSubmission = (req, res, next) => {
         req.body.armorSet.selectedArms.equipment.id,
         req.body.armorSet.selectedWaist.equipment.id,
         req.body.armorSet.selectedFeet.equipment.id,
-        result1.rows[0].id
+        result1.rows[0].id,
+        arts[0],
+        arts[1],
+        arts[2]
       )
     )
     .then(result2 => {
       if (decorations.decos.length > 0)
-        decorations.decos.map((deco, id) => {
+        decorations.decos.map((decos, id) => {
           ArmorSet.saveDecoration(
-            deco,
+            decos.decoration1.id,
+            decos.decoration2.id,
+            decos.decoration3.id,
             result2.rows[0].id,
-            decorations.amount[id]
+            decorations.part[id]
           )
         })
-      return ArmorSet.saveArt(
-        arts[0],
-        arts[1],
-        arts[2],
-        result2.rows[0].id
-      )
+        return result2
     })
     .then(result3 =>
       Submission.saveOrUpdateOne(
@@ -119,7 +130,7 @@ exports.postSubmission = (req, res, next) => {
         req.body.newSubmission.quest.id,
         questTime,
         time,
-        result3.rows[0].set_id
+        result3.rows[0].id
       )
     )
     .then((result4) => {

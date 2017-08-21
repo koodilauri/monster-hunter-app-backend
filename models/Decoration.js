@@ -5,6 +5,9 @@ const Decoration = {
     return query(`SELECT decoration.*, skill.name AS skill_name FROM decoration
     JOIN skill
     ON skill.id = decoration.skill1_id;`)
+  },
+  allSetDecorations(){
+    return query(`SELECT * FROM decoration_in_set`)
   }
 }
 
