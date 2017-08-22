@@ -1,9 +1,13 @@
+
 require("dotenv").config()
+
 const express = require("express")
 const cors = require("cors")
 const app = express()
 const bodyParser = require("body-parser")
+
 require("./db/connect").connect()
+
 const submissionCtrl = require("./controllers/submission")
 const armorCtrl = require("./controllers/armor")
 const decorationCtrl = require("./controllers/decoration")
@@ -13,6 +17,7 @@ const skillCtrl = require("./controllers/skill")
 const charmCtrl = require("./controllers/charm")
 const weaponCtrl = require("./controllers/weapon")
 const armorSetCtrl = require("./controllers/armorSet")
+
 const validate = require("./middlewares/validateBody")
 const errorHandler = require("./middlewares/errorHandler")
 
@@ -38,7 +43,9 @@ app.get("/", (req, res, next) => {
 
 app.get("/submission", submissionCtrl.getSubmission)
 
-app.post("/submission", validate.validateBody("submission", "post"), submissionCtrl.postSubmission)
+app.post("/submission",
+  validate.validateBody("submission", "post"),
+  submissionCtrl.postSubmission)
 
 app.get("/quest", questCtrl.getQuests)
 

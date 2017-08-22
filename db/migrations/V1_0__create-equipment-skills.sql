@@ -70,6 +70,3 @@ CREATE TABLE hunter_art (
   description VARCHAR(230) NOT NULL,
   weapon VARCHAR(15) NOT NULL
 );
-
-GRANT ALL PRIVILEGES ON TABLE skill, skill_effect, armor, decoration, weapon, charm, hunter_art TO mh_db_user;
-GRANT USAGE, SELECT ON SEQUENCE charm_id_seq TO mh_db_user;
