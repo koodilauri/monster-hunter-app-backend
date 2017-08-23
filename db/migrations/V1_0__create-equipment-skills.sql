@@ -36,9 +36,9 @@ CREATE TABLE decoration (
   id SERIAL PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
   size smallint NOT NULL,
-  skill1id int REFERENCES skill(id) NOT NULL,
+  skill1_id int REFERENCES skill(id) NOT NULL,
   bonus1 smallint NOT NULL,
-  skill2id int REFERENCES skill(id),
+  skill2_id int REFERENCES skill(id),
   bonus2 smallint
 );
 
@@ -55,21 +55,18 @@ CREATE TABLE weapon (
 CREATE TABLE charm (
   id SERIAL PRIMARY KEY,  
   slots smallint NOT NULL,
-  skill1id int REFERENCES skill(id) NOT NULL,
-  skill2id int REFERENCES skill(id),
+  skill1_id int REFERENCES skill(id) NOT NULL,
+  skill2_id int REFERENCES skill(id),
   bonus1 smallint NOT NULL,
   bonus2 smallint NOT NULL
 );
 
-ALTER TABLE charm ADD CONSTRAINT unique_charm UNIQUE (slots, skill1id, skill2id, bonus1, bonus2);
+ALTER TABLE charm ADD CONSTRAINT unique_charm UNIQUE (slots, skill1_id, skill2_id, bonus1, bonus2);
 
 CREATE TABLE hunter_art (
   id SERIAL PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
-  gaugesize smallint NOT NULL,
+  gauge_size smallint NOT NULL,
   description VARCHAR(230) NOT NULL,
   weapon VARCHAR(15) NOT NULL
 );
-
-GRANT ALL PRIVILEGES ON TABLE skill, armor, decoration, weapon, charm, hunter_art TO mh_db_user;
-GRANT USAGE, SELECT ON SEQUENCE charm_id_seq TO mh_db_user;

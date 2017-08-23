@@ -1,12 +1,10 @@
 CREATE TABLE submission (
   id  SERIAL PRIMARY KEY,
   name VARCHAR (25) NOT NULL ,
-  questId int REFERENCES quest(id) NOT NULL,
-  questtime TIME NOT NULL ,
-  weaponId int REFERENCES weapon(id) NOT NULL ,
-  style VARCHAR (25) NOT NULL ,
+  quest_id INT REFERENCES quest(id) NOT NULL,
+  quest_time TIME NOT NULL ,
   created TIMESTAMPTZ NOT NULL,
-  setID int REFERENCES armorset(id) NOT NULL
+  set_id INT REFERENCES armor_set(id) NOT NULL
 );
 
 GRANT ALL PRIVILEGES ON TABLE submission TO mh_db_user;

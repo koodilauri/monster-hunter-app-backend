@@ -28,16 +28,12 @@ describe("app route", () => {
               name: "Harvest Tour: Jurassic Frontier",
               id: 1
             },
-            weapon: {
-              name: "Lance",
-              id: 2
-            },
-            style: "Striker",
             minutes: 11,
             seconds: 12
           },
           armorSet: {
-            setName: 'tt',
+            setName: "tt",
+            armorType: "Blademaster",
             selectedWeapon: { equipment: { name: "Hammer", id: 1 } },
             selectedHead: { equipment: { name: 'headarmor', id: 1 } },
             selectedTorso: { equipment: { name: 'torsoarmor', id: 2 } },
@@ -57,18 +53,21 @@ describe("app route", () => {
             }
           },
           styleAndArts: {
-            selectedStyle: "Guild"
+            selectedStyle: "Guild",
+            selectedHunterArts: [{
+              id:1
+            }]
           }
         })
         .set("Accept", "application/json")
         .expect("Content-Type", /json/)
         .expect((res) => {
           expect(res.body.newSubmission.name).to.equal("lauri")
-          expect(res.body.newSubmission.questname).to.equal("Harvest Tour: Jurassic Frontier")
-          expect(res.body.newSubmission.questtime).to.equal("00:11:12")
-          expect(res.body.newSubmission.weaponname).to.equal("Hammer")
+          expect(res.body.newSubmission.quest_name).to.equal("Harvest Tour: Jurassic Frontier")
+          expect(res.body.newSubmission.quest_time).to.equal("00:11:12")
+          expect(res.body.newSubmission.weapon_name).to.equal("Hammer")
           expect(res.body.newSubmission.style).to.equal("Guild")
-          expect(res.body.newSubmission.setid).to.equal(2)
+          expect(res.body.newSubmission.set_id).to.equal(2)
         })
         .expect(200, done)
     })

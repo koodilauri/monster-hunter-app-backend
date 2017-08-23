@@ -9,7 +9,13 @@
   "scripts": {
     "start": "node app.js",
     "test": "mocha test/**/*.test.js",
-    "nodemon": "nodemon app.js"
+    "nodemon": "nodemon app.js",
+    "db:migrate": "flyway -c ./db/conf.js migrate",
+    "db:migrate:heroku": "export NODE_ENV=heroku && flyway -c ./db/conf.js migrate",
+    "db:reset": "sh ./db/test/init-db.sh",
+    "db:add:data": "sh ./mhgen-data/add-data.sh",    
+    "db:reset:heroku": "sh ./db/test/init-db-heroku.sh",
+    "db:connect": "psql postgresql://mh_db_user:mh_password@localhost:5432/mh_db"
   },
   "repository": {
     "type": "git",
@@ -28,6 +34,7 @@
     "express": "^4.15.3",
     "lodash": "^4.17.4",
     "morgan": "^1.8.2",
+    "node-flywaydb": "^0.1.4",
     "pg": "^6.2.4",
     "schema-inspector": "^1.6.8"
   },

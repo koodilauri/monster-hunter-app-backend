@@ -8,8 +8,13 @@ exports.handleErrors = (err, req, res, next) => {
       console.log("Caught an error!", err)
       console.log(JSON.stringify(err, null, 2))
       if (err.message !== undefined) {
+        console.log({ "error": err })
         res.status(statusCode).json({ "error": err });
       } else {
+        console.log({
+          message: "Something caused an internal server error",
+          stack: err.stack,
+        })
         res.status(statusCode).json({
           message: "Something caused an internal server error",
           stack: err.stack,
@@ -17,7 +22,12 @@ exports.handleErrors = (err, req, res, next) => {
       }
     } else {
       const message = err.message ? err.message : "Internal server error.";
-      res.status(statusCode).json({ "error": message });
+      console.log({ "message": message })
+      res.status(statusCode).json({
+        "error": {
+          "message": message
+        }
+      });
     }
   } else {
     next();

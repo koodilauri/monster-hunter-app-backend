@@ -2,7 +2,7 @@ const query = require("../db/connect").query
 
 const ArmorSet = {
   findAll() {
-    return query(`SELECT armorset.*, A.name AS head, B.name AS torso, C.name AS arms, D.name AS waist, E.name AS feet, F.slots AS charmSize, F.bonus1, F.bonus2, G.name as skill1, H.name as skill2 FROM armorset
+    return query(`SELECT armor_set.*, A.name AS head, B.name AS torso, C.name AS arms, D.name AS waist, E.name AS feet, F.slots AS charm_size, F.bonus1, F.bonus2, G.name as skill1, H.name as skill2 FROM armor_set
     JOIN armor A
     ON head_id = A.id
     JOIN armor B
@@ -16,15 +16,26 @@ const ArmorSet = {
     JOIN charm F
     ON charm_id = F.id
     JOIN skill G
-    ON F.skill1id = G.id
+    ON F.skill1_id = G.id
     JOIN skill H
-    ON F.skill2id = H.id`)
+    ON F.skill2_id = H.id`)
   },
-  saveOrUpdateOne(head_id, torso_id, arms_id, waist_id, feet_id, charm_id) {
-    return query(`INSERT INTO armorset (head_id, torso_id, arms_id, waist_id, feet_id, charm_id) VALUES ($1, $2, $3, $4, $5, $6)
-    ON CONFLICT (head_id, torso_id, arms_id, waist_id, feet_id, charm_id) DO UPDATE SET head_id=EXCLUDED.head_id
-    RETURNING id`, [head_id, torso_id, arms_id, waist_id, feet_id, charm_id])
+  saveOrUpdateOne(name, style, weapon_id, head_id, torso_id, arms_id, waist_id, feet_id, charm_id, art1_id, art2_id, art3_id) {
+    return query(`INSERT INTO armor_set (name, style, weapon_id, head_id, torso_id, arms_id, waist_id, feet_id, charm_id, art1_id, art2_id, art3_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+    RETURNING id`, [name, style, weapon_id, head_id, torso_id, arms_id, waist_id, feet_id, charm_id, art1_id, art2_id, art3_id])
+  },
+  // ON CONFLICT (head_id, torso_id, arms_id, waist_id, feet_id, charm_id) DO UPDATE SET head_id=EXCLUDED.head_id
+
+  saveDecoration(decoration1_id, decoration2_id, decoration3_id, set_id, part) {
+    return query(`INSERT INTO decoration_in_set (decoration1_id, decoration2_id, decoration3_id, set_id, part) VALUES ($1, $2, $3, $4, $5)
+    RETURNING set_id`,
+      [decoration1_id, decoration2_id, decoration3_id, set_id, part])
   }
+  // saveOrUpdateArt(art1_id, art2_id, art3_id, set_id) {
+  //   return query(`INSERT INTO art_in_set (art1_id, art2_id, art3_id, set_id) VALUES ($1, $2, $3, $4)
+  //   RETURNING set_id`,
+  //     [art1_id, art2_id, art3_id)
+  // }
 }
 
 module.exports = ArmorSet

@@ -20,4 +20,7 @@ services:
 addons:
   postgresql: "9.6"
 before_script:
-  - sh ./db/test/init-db.sh
+  - npm run db:reset
+  - npm run db:migrate
+  - sh ./db/test/add-test-data.sh
+  
