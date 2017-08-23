@@ -7,5 +7,5 @@ CREATE TABLE submission (
   set_id INT REFERENCES armor_set(id) NOT NULL
 );
 
-GRANT ALL PRIVILEGES ON TABLE submission TO mh_db_user;
-GRANT USAGE, SELECT ON SEQUENCE submission_id_seq TO mh_db_user;
+-- GRANT ALL PRIVILEGES ON TABLE submission TO mh_db_user;
+-- GRANT USAGE, SELECT ON SEQUENCE submission_id_seq TO mh_db_user;

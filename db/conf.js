@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === "heroku") {
 const { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD } = process.env
 
 module.exports = {
-  url: `jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+  url: `jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory`,
   schemas: 'public',
   locations: 'filesystem:db/migrations',
   user: DB_USER,

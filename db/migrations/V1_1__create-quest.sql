@@ -22,6 +22,6 @@ CREATE TABLE monster_in_quest (
   type VARCHAR(30) NOT NULL
 );
 
-GRANT ALL PRIVILEGES ON TABLE quest TO mh_db_user;
-GRANT ALL PRIVILEGES ON TABLE monster_in_quest TO mh_db_user;
+-- GRANT ALL PRIVILEGES ON TABLE quest TO mh_db_user;
+-- GRANT ALL PRIVILEGES ON TABLE monster_in_quest TO mh_db_user;
 
