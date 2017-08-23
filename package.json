@@ -13,8 +13,9 @@
     "db:migrate": "flyway -c ./db/conf.js migrate",
     "db:migrate:heroku": "export NODE_ENV=heroku && flyway -c ./db/conf.js migrate",
     "db:reset": "sh ./db/test/init-db.sh",
-    "db:add:data": "sh ./mhgen-data/add-data.sh",    
-    "db:reset:heroku": "sh ./db/test/init-db-heroku.sh",
+    "db:add:data": "sh ./mhgen-data/add-data.sh",   
+    "db:add:data:heroku": "sh ./mhgen-data/add-data-heroku.sh",        
+    "db:reset:heroku": "sh ./db/test/init-heroku-db.sh",
     "db:connect": "psql postgresql://mh_db_user:mh_password@localhost:5432/mh_db"
   },
   "repository": {
