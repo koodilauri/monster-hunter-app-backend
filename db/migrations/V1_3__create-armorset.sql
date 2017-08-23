@@ -34,5 +34,5 @@ CREATE TABLE decoration_in_set(
 );
 
 -- ALTER TABLE armor_set ADD CONSTRAINT unique_set UNIQUE (head_id, torso_id, arms_id, waist_id, feet_id, charm_id);
-GRANT ALL PRIVILEGES ON TABLE armor_set, decoration_in_set TO mh_db_user;
-GRANT USAGE, SELECT ON SEQUENCE armor_set_id_seq TO mh_db_user;
+-- GRANT ALL PRIVILEGES ON TABLE armor_set, decoration_in_set TO mh_db_user;
+-- GRANT USAGE, SELECT ON SEQUENCE armor_set_id_seq TO mh_db_user;
