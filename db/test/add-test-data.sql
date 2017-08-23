@@ -33,7 +33,6 @@ INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, 
 INSERT INTO armor (name, slots, part, type, defense, fire, water, thunder, ice, dragon, rarity, skill1, amount1, skill2, amount2, skill3, amount3) VALUES('Hunting Leggings', 2, 'Feet', 'Gunner', 34, 2, 0, 0, 0, 0, 1, 2, 3, 4, 0, 4, 0);
 
 INSERT INTO charm (slots, skill1_id, skill2_id, bonus1, bonus2) VALUES(1,1,2,3,4);
-INSERT INTO armor_set (name, style, weapon_id, head_id, torso_id, arms_id, waist_id, feet_id, charm_id) VALUES('testSet', 'Guild', 1,1,2,3,4,5,1);
 
 INSERT INTO hunter_art (name, gauge_size, description, weapon) VALUES('Absolute Evasion', 250, 'Perform a corkscrew-like evasion, providing a window of opportunity to make an emergency escape. Sports a lengthy period of invulnerability and sheathes your weapon automatically upon use.', 'General');
 INSERT INTO hunter_art (name, gauge_size, description, weapon) VALUES('Hunter''s Oasis', 1330, 'Places a special device on the ground that emits a Health-restoring mist. It will continue to restore your Health as long as you are within range.', 'General');
@@ -43,6 +42,8 @@ INSERT INTO hunter_art (name, gauge_size, description, weapon) VALUES('Lion''s M
 INSERT INTO hunter_art (name, gauge_size, description, weapon) VALUES('Triple Volley I', 580, 'Fire off arrows in groups of three, with the final shot being the strongest. Fires in the direction you were facing upon activation.', 'Bow');
 INSERT INTO hunter_art (name, gauge_size, description, weapon) VALUES('Triple Volley II', 670, 'In Tier II, the final shot takes longer to fire, yet is stronger than in Tier I.', 'Bow');
 INSERT INTO hunter_art (name, gauge_size, description, weapon) VALUES('Triple Volley III', 750, 'In Tier III, the final shot takes longer to fire, yet is stronger than in Tier II.', 'Bow');
+
+INSERT INTO armor_set (name, style, weapon_id, head_id, torso_id, arms_id, waist_id, feet_id, charm_id, art1_id, art2_id, art3_id) VALUES('testSet', 'Guild', 1,1,2,3,4,5,1,3,2,1);
 
 INSERT INTO submission (name, quest_id, quest_time, created, set_id) VALUES ('lauri', 1, '00:05:31', '2017-06-12',1);
 INSERT INTO submission (name, quest_id, quest_time, created, set_id) VALUES ('bob', 2, '00:06:02', '2017-06-13',1);

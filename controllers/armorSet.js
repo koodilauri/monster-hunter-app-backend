@@ -8,7 +8,9 @@ exports.getArmorSets = (req, res, next) => {
     .then((result1) => {
       Decoration.allSetDecorations()
         .then(result2 => {
-          res.json({ armorSets: result1.rows, setDecorations: result2.rows })
+          res.json({
+            armorSets: result1.rows, setDecorations: result2.rows
+          })
         }
         )
     })

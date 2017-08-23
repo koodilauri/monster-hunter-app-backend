@@ -21,3 +21,5 @@ addons:
   postgresql: "9.6"
 before_script:
   - sh ./db/test/init-db.sh
+  - sh ./db/test/add-test-data.sh
+  
