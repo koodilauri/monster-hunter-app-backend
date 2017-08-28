@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mh_postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: mh_password
+      POSTGRES_USER: mh_db_user
+      POSTGRES_DB: mh_db
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "5555:5432"

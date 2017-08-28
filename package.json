@@ -4,19 +4,22 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "6.11.1"
+    "node": "8.0.0"
   },
   "scripts": {
     "start": "node app.js",
     "test": "mocha test/**/*.test.js",
     "nodemon": "nodemon app.js",
+    "db:start": "docker-compose -f ./db/docker-compose.yml up -d",
     "db:migrate": "flyway -c ./db/conf.js migrate",
     "db:migrate:heroku": "export NODE_ENV=heroku && flyway -c ./db/conf.js migrate",
-    "db:reset": "sh ./db/test/init-db.sh",
+    "db:reset": "sh ./db/test/reset-db.sh",
+    "db:init": "npm run db:reset && npm run db:migrate && npm run db:add",
+    "db:add": "sh ./db/test/add-test-data.sh",
     "db:add:data": "sh ./mhgen-data/add-data.sh",   
     "db:add:data:heroku": "sh ./mhgen-data/add-data-heroku.sh",        
-    "db:reset:heroku": "sh ./db/test/init-heroku-db.sh",
-    "db:connect": "psql postgresql://mh_db_user:mh_password@localhost:5432/mh_db"
+    "db:reset:heroku": "sh ./db/test/reset-heroku-db.sh",
+    "db:connect": "psql postgresql://mh_db_user:mh_password@localhost:5555/mh_db"
   },
   "repository": {
     "type": "git",

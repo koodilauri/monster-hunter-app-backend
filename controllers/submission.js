@@ -66,27 +66,6 @@ exports.postSubmission = (req, res, next) => {
   const arts = parseArts(req.body.styleAndArts.selectedHunterArts)
   const decorations = parseDecorations(req.body.armorSet)
   console.log("all the decos ", decorations.decos, decorations.part)
-  // const dummyCharm = {
-  //   slots: 0,
-  //   skill1: 149,
-  //   skill2: 149,
-  //   bonus2: 0,
-  //   bonus2: 0
-  // }
-  // const dummyArmorSet = {
-  //   selectedHead: 1,
-  //   selectedTorso: 2,
-  //   selectedArms: 3,
-  //   selectedWaist: 4,
-  //   selectedFeet: 5
-  // }
-  // if (req.body.armorSet) {
-  //   if (req.body.armorSet.selectedHead.equipment.name === "") req.body.armorSet.selectedHead.equipment.id = 1
-  //   if (req.body.armorSet.selectedTorso.equipment.name === "") req.body.armorSet.selectedTorso.equipment.id = 2
-  //   if (req.body.armorSet.selectedArms.equipment.name === "") req.body.armorSet.selectedArms.equipment.id = 3
-  //   if (req.body.armorSet.selectedWaist.equipment.name === "") req.body.armorSet.selectedWaist.equipment.id = 4
-  //   if (req.body.armorSet.selectedFeet.equipment.name === "") req.body.armorSet.selectedFeet.equipment.id = 5
-  // }
   const time = new Date()
   Charm.saveOrUpdateOne(
     req.body.armorSet.selectedCharm.equipment.slots,

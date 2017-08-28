@@ -1,3 +1,14 @@
+INSERT INTO skill (name) VALUES('Ammo Saver');
+INSERT INTO skill (name) VALUES('Anti-Theft');
+INSERT INTO skill (name) VALUES('Artillery');
+INSERT INTO skill (name) VALUES('Attack');
+INSERT INTO skill (name) VALUES('Bherna');
+INSERT INTO skill (name) VALUES('Bind Res');
+INSERT INTO skill (name) VALUES('Biology');
+INSERT INTO skill (name) VALUES('Blast C+');
+INSERT INTO skill (name) VALUES('Bleeding');
+INSERT INTO skill (name) VALUES('Blight Res');
+
 INSERT INTO quest (name, stars, quest_giver, goal, sub_goal, game) VALUES('Harvest Tour: Jurassic Frontier', 1, 'Guild', 'Survive until time expires or deliver a Paw Pass Ticket', 'None', 'MHGen');
 INSERT INTO quest (name, stars, quest_giver, goal, sub_goal, game) VALUES('Harvest Tour: Dunes', 1, 'Guild', 'Survive until time expires or deliver a Paw Pass Ticket', 'None', 'MHGen');
 INSERT INTO quest (name, stars, quest_giver, goal, sub_goal, game) VALUES('Harvest Tour: Verdant Hills', 1, 'Guild', 'Survive until time expires or deliver a Paw Pass Ticket', 'None', 'MHGen');
