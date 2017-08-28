@@ -1,13 +1,9 @@
 const Skill = require("../models/Skill")
 const handleErrors = require("../middlewares/errorHandler")
 
-exports.getSkills = (req, res, next) => {
-  Skill.findAll()
-    .then((result) => {
-      Skill.findEffects()
-        .then((result2) => {
-          res.json({ skills: result.rows, effects: result2.rows })
-        })
-    })
-    .catch((err) => next(err))
+exports.getSkills = async (req, res, next) => {
+  const skills = await Skill.findAll().catch((err) => next(err))
+  const effects = await Skill.findEffects().catch((err) => next(err))
+  res.json({ skills: skills.rows, effects: effects.rows })
+
 }

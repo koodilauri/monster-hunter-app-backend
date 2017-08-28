@@ -4,19 +4,14 @@ const HunterArt = require("../models/HunterArt")
 const handleErrors = require("../middlewares/errorHandler")
 
 exports.getArmorSets = async (req, res, next) => {
-  try {
-    const a = await ArmorSet.findAll()
-    const b = await Decoration.allSetDecorations()
-    res.json({
-      armorSets: a.rows,
-      setDecorations: b.rows
-    })
-  } catch (err) {
-    next(err)
-  }
+  const armorSets = await ArmorSet.findAll().catch(err => next(err))
+  const setDecorations = await Decoration.allSetDecorations().catch(err => next(err))
+  res.json({
+    armorSets: armorSets.rows,
+    setDecorations: setDecorations.rows
+  })
+
 }
-
-
   // Promise.all([ArmorSet.findAll(), Decoration.allSetDecorations()])
   //   .then(result => {
   //     res.json({
