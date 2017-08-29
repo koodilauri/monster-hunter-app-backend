@@ -12,4 +12,4 @@
 - Get dependencies with `npm install`
 - Create .env file with `cp .env.development .env`
 - Run `npm run db:start` and `npm run db:init`(or `npm run db:reset`, `npm run db:migrate`, `npm run db:add`) to start and create the db
--To run backend locally, use `npm run nodemon`
+- To run backend locally, use `npm run nodemon`
