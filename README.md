@@ -7,9 +7,9 @@
 
 
 # Install:
-- backend requires docker and docker-compose
-- download both frontend and backend repositories
-- get dependencies with `npm install`
-- use .env.development files to make .env files for frontend and backend
-- in backend run `npm run db:start` and `npm run db:init`(or `npm run db:reset` `npm run db:migrate` `npm run db:add`) to start and create the db
-- start frontend with `npm start`
+- Backend requires [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/install/)
+- Download the backend repository
+- Get dependencies with `npm install`
+- Create .env file with `cp .env.development .env`
+- Run `npm run db:start` and `npm run db:init`(or `npm run db:reset`, `npm run db:migrate`, `npm run db:add`) to start and create the db
+-To run backend locally, use `npm run nodemon`
