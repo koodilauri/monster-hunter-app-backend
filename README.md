@@ -7,9 +7,10 @@
 
 
 # Install:
-- Backend requires [docker](https://www.docker.com/), [docker-compose](https://docs.docker.com/compose/install/) and [node.js](https://nodejs.org/en/)
-- Download the backend repository
-- Get dependencies with `npm install`
-- Create .env file with `cp .env.development .env`
-- Run `npm run db:start` and `npm run db:init`(or `npm run db:reset`, `npm run db:migrate`, `npm run db:add`) to start and create the db
-- To run backend locally, use `npm run nodemon`
+- You need to install [Docker](https://www.docker.com/) and [Docker-compose](https://docs.docker.com/compose/install/) for running the Postgres database
+- Install Node.js >=8.4 using [nvm](https://github.com/creationix/nvm)
+- Clone this repository install dependencies with `npm i`
+- This project uses .env for storing environment variables. Copy the development variables using `cp .env.development .env`
+- Start the database server using Docker with npm run db:start
+- Initialize the database with npm run db:init (resets the schema, runs migrations and adds test data) 
+- Run the development server using npm run nodemon or the non-daemon version with npm start
