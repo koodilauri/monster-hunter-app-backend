@@ -7,7 +7,7 @@
 
 
 # Install:
-- Backend requires [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/install/)
+- Backend requires [docker](https://www.docker.com/), [docker-compose](https://docs.docker.com/compose/install/) and [node.js](https://nodejs.org/en/)
 - Download the backend repository
 - Get dependencies with `npm install`
 - Create .env file with `cp .env.development .env`
