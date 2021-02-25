@@ -22,7 +22,7 @@ const validate = require("./middlewares/validateBody")
 const errorHandler = require("./middlewares/errorHandler")
 
 const corsOptions = {
-  origin: ["https://monster-hunter-app.herokuapp.com", "https://mh-tracker.net", "http://localhost:3000"],
+  origin: ["https://monster-hunter-app.herokuapp.com", "https://d386g19k2b21z4.cloudfront.net", "http://localhost:3000"],
   optionsSuccessStatus: 200
 }
 if (process.env.NODE_ENV != "production") {
